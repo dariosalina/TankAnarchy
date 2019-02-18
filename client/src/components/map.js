@@ -1,16 +1,18 @@
-// import React from 'react'
-// import { PlayerContainer } from './PlayerContainer';
+import React from 'react'
+import Player from './Player';
 
 
-// function Map(props){
-//     return (
-//         <div
-//         style={{
-//             height: 300,
-//             with: 500
-//         }
-//         }>
-//             <PlayerContainer/>
-//         </div>
-//     )
-// }
+function Map(props){
+    return (
+        <div
+        style={{
+            height: '300px',
+            width: '400px',
+            border: '4px solid black'
+        }}>
+            <Player/>
+        </div>
+    )
+}
+
+export default Map

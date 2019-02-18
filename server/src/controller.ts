@@ -1,14 +1,13 @@
 import {Controller, Get} from 'routing-controllers'
-// import { isMainThread } from 'worker_threads';
 
 @Controller()
-export default class {@Get('/test')
-main(){
-    return {
-        hello: 'test'
+export default class MainController {
+
+    @Get("/hello")
+    main() {
+       return {
+         hello: 'World'
+       }
     }
-}
-
 
 }
-    
