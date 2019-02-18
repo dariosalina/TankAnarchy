@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Player from './Player'
 import {connect} from 'react-redux'
-import {Position, movement } from '../api/index'
+import { movement } from '../api/index'
 
 const data = 2
 
@@ -10,9 +10,7 @@ export class PlayerContainer extends Component {
     super(props);
 
     movement(data)
-    Position(props=>{
-      console.log(props)
-    })
+   
   }
     componentDidMount(){
       
