@@ -1,12 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Player from './Player'
+import {connect} from 'react-redux'
 
-class PlayerContainer extends Component {
+export class PlayerContainer extends Component {
+
+    componentDidMount(){
+      // this.setState()
+    }
+
+
     render() {
+      console.log(this.props)
+      if (!this.props) return "loading..."
       return (
-        <Player />
+        <Player position={this.props.player} />
       );
+    }
+
+   
+  }
+
+  function mapStateToProps(state) {
+    console.log(this.state)
+    return {
+        ...state.player
     }
   }
 
-export default PlayerContainer
+
+export default connect(mapStateToProps)(PlayerContainer)
