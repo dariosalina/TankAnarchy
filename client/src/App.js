@@ -11,9 +11,9 @@ class App extends Component {
     // an anonymous callback function that 
     // simply console.log's the received 
     // message
-    connect(message => {
-      console.log(message);
-    });
+    // connect(message => {
+    //   console.log(message);
+    // });
     }
 
   render(){
