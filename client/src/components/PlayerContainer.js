@@ -1,16 +1,31 @@
 import React, { Component } from 'react'
 import Player from './Player'
 import {connect} from 'react-redux'
+import {Position, movement } from '../api/index'
+
+const data = 2
 
 export class PlayerContainer extends Component {
+  constructor(props) {
+    super(props);
 
+    movement(data)
+    Position(props=>{
+      console.log(props)
+    })
+  }
     componentDidMount(){
-      // this.setState()
+      
     }
 
 
+
+    // movement(){
+    //   const data = 2
+    //   socket.on('movement', data )
+    // }
+
     render() {
-      console.log(this.props)
       if (!this.props) return "loading..."
       return (
         <Player position={this.props} />
@@ -21,7 +36,7 @@ export class PlayerContainer extends Component {
   }
 
   function mapStateToProps(state) {
-    console.log(state)
+    console.log(state.player)
     return {
         ...state.player
     }

@@ -20,8 +20,33 @@ io.on('connection', function(socket) {
 
   console.log(`User  just connected`)
   io.emit('chat', "ciao");
+  io.emit('position', "position");
+
+  socket.on('move', data=>{
+      
+      console.log(data, "server")
+  
+      let test:any = data.mov+2
+
+      io.emit('move-completed', test);
+  
+    })
+  
+
   socket.on('disconnect', () => {
-    console.log(`User  just disconnected`)}
-)});
+    console.log(`User  just disconnected`)})
+
+
+    // socket.on('movement', function(data){
+    //     console.log(data)
+    //     io.emit('movement', data+1)
+    // })
+
+
+});
+
+
+
+
 
 server.listen(port, ()=> console.log(`Listening on port ${port}`))

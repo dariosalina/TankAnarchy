@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PlayerContainer from './components/PlayerContainer'
 import './App.css';
-import {connect } from './api/index'
+import {connect} from './api/index'
 
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props);  
     // call our connect function and define
     // an anonymous callback function that 
     // simply console.log's the received 
@@ -14,7 +14,7 @@ class App extends Component {
     connect(message => {
       console.log(message);
     });
-  }
+    }
 
   render(){
   return (
