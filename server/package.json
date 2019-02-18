@@ -8,7 +8,6 @@
     "compile": "tsc",
     "start": "nodemon .",
     "postinstall": "tsc -p ."
-    
   },
   "keywords": [],
   "author": "",
@@ -23,6 +22,7 @@
     "@types/mocha": "^5.2.6",
     "@types/socket.io": "^2.1.2",
     "bcrypt": "^3.0.4",
+    "httpie": "^1.1.0",
     "jsonwebtoken": "^8.4.0",
     "kcors": "^2.2.2",
     "koa": "^2.7.0",
