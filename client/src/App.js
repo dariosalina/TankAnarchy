@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PlayerContainer from './components/PlayerContainer'
+import Map from './components/map'
 import './App.css';
 import {connect} from './api/index'
 
@@ -19,7 +19,7 @@ class App extends Component {
   render(){
   return (
       <div className="App">
-        <PlayerContainer />
+        <Map />
       </div>
     );
   }}

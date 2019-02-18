@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import {useKoaServer} from 'routing-controllers'
-import Controller from './controller'
+import {useKoaServer} from "routing-controllers"
+import Controller from "./controller"
 import * as Koa from 'koa'
 import * as IO from 'socket.io'
 import {Server} from 'http'
@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000
 
 useKoaServer(app, {
     cors: true,
-    controllers: [Controller]
+   controllers: [Controller]
 })
 
 // Server is working, controller /test is working. socket still not working
@@ -34,19 +34,7 @@ io.on('connection', function(socket) {
   
 
   socket.on('disconnect', () => {
-    console.log(`User  just disconnected`)})
-
-
-    // socket.on('movement', function(data){
-    //     console.log(data)
-    //     io.emit('movement', data+1)
-    // })
-
-
-});
-
-
-
-
+    console.log(`User  just disconnected`)}
+)});
 
 server.listen(port, ()=> console.log(`Listening on port ${port}`))

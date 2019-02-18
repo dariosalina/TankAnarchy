@@ -1,18 +1,20 @@
 import {Controller, Get} from 'routing-controllers'
-// import { isMainThread } from 'worker_threads';
 
 @Controller()
-export default class {
-    
-@Get('/')
-main(){
-    
-    return {
-        hello: 'test'
-    }
-  }
-}
+export default class MainController {
 
-// app.get("/", (req, res) => {
-//     res.sendFile(__dirname + "/index.html");
-//   });
+    @Get("/hello")
+    main() {
+       return {
+         hello: 'World'
+       }
+    }
+
+}
+// io.on('connection', function(socket) {
+
+//   console.log(`User  just connected`)
+
+//   socket.on('disconnect', () => {
+//     console.log(`User  just disconnected`)}
+// )});
