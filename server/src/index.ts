@@ -15,12 +15,30 @@ useKoaServer(app, {
   controllers: [Controller]
 });
 
+
+let player = {
+  position: [0,0]
+}
+
+
 // Server is working, controller /test is working. socket still not working
 io.on("connection", function(socket) {
   console.log(`User  just connected`);
 
-  socket.on("move", data => {
-    console.log(data, "server");
+
+  socket.on('playerMovement', data=>{
+    
+    player = data
+
+    io.emit('playersMove-completed', player);
+
+  })
+
+
+  console.log(`User  just connected`)
+  io.emit('chat', "ciao");
+  io.emit('position', "position");
+
 
     let test: any = data.mov + 2;
 
