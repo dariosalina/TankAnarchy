@@ -4,11 +4,15 @@ import {Controller, Get} from 'routing-controllers'
 @Controller()
 export default class {
     
-@Get('/test')
+@Get('/')
 main(){
-    console.log('test')
+    
     return {
         hello: 'test'
     }
   }
 }
+
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + "/index.html");
+//   });

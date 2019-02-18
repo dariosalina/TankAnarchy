@@ -15,15 +15,13 @@ useKoaServer(app, {
     controllers: [Controller]
 })
 
-app.listen(port, ()=> console.log(`Listening on port ${port}`))
-
-
 // Server is working, controller /test is working. socket still not working
-// io.on('connection', function(socket) {
+io.on('connection', function(socket) {
 
-//   console.log(`User  just connected`)
+  console.log(`User  just connected`)
+  io.emit('chat', "ciao");
+  socket.on('disconnect', () => {
+    console.log(`User  just disconnected`)}
+)});
 
-//   socket.on('disconnect', () => {
-//     console.log(`User  just disconnected`)}
-// )});
-
+server.listen(port, ()=> console.log(`Listening on port ${port}`))
