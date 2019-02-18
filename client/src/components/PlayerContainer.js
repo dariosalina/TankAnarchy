@@ -13,7 +13,7 @@ export class PlayerContainer extends Component {
       console.log(this.props)
       if (!this.props) return "loading..."
       return (
-        <Player position={this.props.player} />
+        <Player position={this.props} />
       );
     }
 
@@ -21,7 +21,7 @@ export class PlayerContainer extends Component {
   }
 
   function mapStateToProps(state) {
-    console.log(this.state)
+    console.log(state)
     return {
         ...state.player
     }

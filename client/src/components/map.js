@@ -5,9 +5,11 @@
 // function Map(props){
 //     return (
 //         <div
-//         style=({
-
-//         })>
+//         style={{
+//             height: 300,
+//             with: 500
+//         }
+//         }>
 //             <PlayerContainer/>
 //         </div>
 //     )
