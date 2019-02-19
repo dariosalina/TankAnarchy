@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
+import Tank from './Tank.png'
 
 receivePlayerData()
 
@@ -15,13 +16,14 @@ class Player extends Component {
           position: "relative",
           top: this.props.position[1],
           left: this.props.position[0],
-          backgroundColor: "blue",
-          color: "white",
-          width: 40,
-          height: 40
+          backgroundImage: `url(${Tank})`,
+          transform: `rotate(${this.props.direction}deg)`,
+          // color: "white",
+          width: 60,
+          height: 50
         }}
       >
-        Player
+        {/* Player 1  */}
       </div>
     );
   }
