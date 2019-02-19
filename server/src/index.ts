@@ -32,14 +32,14 @@ io.on("connection", function(socket) {
 
 
   socket.on("movement", data => {
-
+    console.log(socket.id)
     const playerMovement = {
       id: socket.id,
       position: data.position
     }
-    console.log(socket.id)
+    // console.log(socket.id)
     // player = data
-    console.log(data)
+    // console.log(data)
     io.emit('move-completed', playerMovement);
   });
 
