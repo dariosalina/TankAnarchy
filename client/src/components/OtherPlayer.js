@@ -1,36 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PlayerMovement from "../actions/movement";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
-import {playerConnected} from '../actions/otherPlayerMovement'
-// receivePlayerData()
-// playerConnected()
-class Player extends Component {
+
+receivePlayerData()
+
+class OtherPlayer extends Component {
   
 
   render() {
+
     return (
+       <div>
+             {!this.props && "loading..."}
+             
       <div
         style={{
           position: "relative",
           top: this.props.position[1],
           left: this.props.position[0],
-          backgroundColor: "blue",
+          backgroundColor: "red",
           color: "white",
           width: 40,
           height: 40
         }}
       >
-        Player
+        Player2
       </div>
+      </div>    
     );
   }
 }
 
 function mapStateToProps(state) {
+    console.log(state)
   return {
-    ...state.player
+    ...state.otherPlayer
   };
 }
 
-export default connect(mapStateToProps)(PlayerMovement(Player));
+export default connect(mapStateToProps)(OtherPlayer);

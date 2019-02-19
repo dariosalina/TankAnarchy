@@ -10,12 +10,10 @@ const inititalState = {
 
 const playerReducer = (state = inititalState, action) => {
 
-
-
     switch(action.type) {
         case 'MOVE_PLAYER':
-        socket.emit('movement', action.payload)
-        // console.log(action.payload)
+        socket.emit('movement', ({position:action.payload.position}))
+
             return {
                 ...action.payload
             }

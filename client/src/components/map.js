@@ -1,5 +1,6 @@
 import React from "react";
 import Player from "./Player";
+import OtherPlayer from "./OtherPlayer";
 
 function Map(props) {
   return (
@@ -11,6 +12,7 @@ function Map(props) {
       }}
     >
       <Player />
+      <OtherPlayer />
     </div>
   );
 }
