@@ -1,44 +1,21 @@
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000/');
 
-// function connect(cb) {
-//   // listen for any messages coming through
-//   // of type 'chat' and then trigger the 
-//   // callback function with said message
-//   socket.on('chat', (message) => {
-//     // console.log the message for posterity
-//     console.log(message)
-//     // trigger the callback passed in when
-//     // our App component calls connect
-//     cb(message);
-//   })
-// }
 
 
-function movement(){
+function receivePlayerData () {
+  socket.emit('move-completed', data =>
+  console.log(data, "from server"))
   
-  socket.on('movement', (data) => {
-    // console.log the message for posterity
-    console.log(data)
-    // trigger the callback passed in when
-    // our App component calls connect
-    
-  })
-};
-
-const test = {
-  mov:2
-
+  
+  console.log(socket.id)
+ 
 }
 
-function emitPlayerData () {
 
-  socket.emit('move', test)
-  console.log(test, "local client not receiving")
-}
+receivePlayerData()
 
-emitPlayerData()
-socket.on('move-completed', test=>
-console.log(test, "server"))
 
-export { movement }
+
+
+

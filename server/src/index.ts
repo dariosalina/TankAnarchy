@@ -35,7 +35,7 @@ io.on("connection", function(socket) {
     console.log(socket.id)
     // player = data
     console.log(data)
-    io.to("aWiUQezdc11Bz4pxAAAB").emit("playersMove-completed", data);
+    io.emit('move-completed', data);
   });
 
   console.log(`User  just connected`);
