@@ -15,13 +15,30 @@ export default function PlayerMovement(Player) {
       default:
         return console.log("not working");
     }
+  } 
+
+  function getNewDirection(direction) {
+    
+    switch (direction) {
+      case "WEST":
+        return  0;
+      case "SOUTH":
+        return 270;
+      case "NORTH":
+        return 90;
+      case "EAST":
+        return 180;
+      default:
+        return console.log("not working");
+    }
   }
 
   function dispatchMove(direction) {
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: getNewPosition(direction)
+        position: getNewPosition(direction),
+        direction: getNewDirection(direction)
       }
     });
   }
@@ -46,4 +63,14 @@ export default function PlayerMovement(Player) {
     handleKeyDown(e);
   });
   return Player;
+}
+
+
+
+export function dispatchOtherPlayerMove(direction){
+    console.log(direction)
+    store.dispatch({
+        type: "MOVE_OTHERPLAYER",
+        payload: direction
+    })
 }

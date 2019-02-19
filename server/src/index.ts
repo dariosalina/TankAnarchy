@@ -15,30 +15,24 @@ useKoaServer(app, {
   controllers: [Controller]
 });
 
-// let player = {
-//  position: []
-// };
 
 // Server is working, controller /test is working.
 io.on("connection", function(socket) {
-  console.log(`User  just connected`);
+  console.log(`User ${socket.id} just connected`);
 
-  socket.on('new player', function(){
-    // players[socket.id] = {
-    //   x: 300,
-    //   y: 300
-    // };
-  })
-
-
+  
   socket.on("movement", data => {
     console.log(socket.id)
+    const playerMovement = {
+      id: socket.id,
+      position: data.position
+    }
+    // console.log(socket.id)
     // player = data
-    console.log(data)
-    io.emit('move-completed', data);
+    // console.log(data)
+    io.emit('move-completed', playerMovement);
   });
 
-  console.log(`User  just connected`);
 
   socket.on("disconnect", () => {
     console.log(`User  just disconnected`);

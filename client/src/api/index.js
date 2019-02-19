@@ -1,19 +1,32 @@
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000/');
+// import store from "../store";
+// import openSocket from 'socket.io-client';
+// const socket = openSocket('http://localhost:5000/');
 
-
-
-function receivePlayerData () {
-  socket.emit('move-completed', data =>
-  console.log(data, "from server"))
+   
+// export function receivePlayerData() {
+//   socket.on('move-completed', (data) => {
   
-  
-  console.log(socket.id)
- 
-}
+//   const OtherPlayerID = data.id
+//   console.log(data.position)
+
+//   if (OtherPlayerID === socket.id){
+//     return console.log("is the same")
+//   } else {
+//   return dispatchOtherPlayerMove(data.position)
+//   }})
+// }
 
 
-receivePlayerData()
+
+// function dispatchOtherPlayerMove(direction){
+//     console.log(direction)
+//     store.dispatch({
+//         type: "MOVE_OTHERPLAYER",
+//         payload: {position: direction}
+//     })
+// }
+
+
 
 
 
