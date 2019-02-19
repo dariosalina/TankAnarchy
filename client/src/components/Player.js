@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
+import {playerConnected} from '../actions/otherPlayerMovement'
+// receivePlayerData()
+// playerConnected()
 import Tank from './Tank.png'
 
 receivePlayerData()
+
 
 class Player extends Component {
   

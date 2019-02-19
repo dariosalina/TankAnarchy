@@ -1,6 +1,8 @@
 import React from "react";
 import Player from "./Player";
+import OtherPlayer from "./OtherPlayer";
 import sand_template from './sand_template.jpg'
+
 
 function Map(props) {
   return (
@@ -13,6 +15,7 @@ function Map(props) {
       }}
     >
       <Player />
+      <OtherPlayer />
     </div>
   );
 }

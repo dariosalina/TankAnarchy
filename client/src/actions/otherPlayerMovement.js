@@ -2,18 +2,22 @@ import store from "../store";
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000/');
 
-   
-export function receivePlayerData() {
-  socket.on('move-completed', (data) => {
-  
-  const OtherPlayerID = data.id
-  console.log(data.position)
+receivePlayerData()
 
-  if (OtherPlayerID === socket.id){
-    return console.log("is the same")
-  } else {
+export function playerConnected() {
+    socket.on('player-connected', (data) => {
+    console.log(data)
+
+  })
+}
+
+
+export function receivePlayerData() {
+    
+  socket.on('move-completed', (data) => {
+ 
   return dispatchOtherPlayerMove(data.position)
-  }})
+  })
 }
 
 
