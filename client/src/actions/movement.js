@@ -15,7 +15,9 @@ export default function PlayerMovement(Player) {
       default:
         return console.log("not working");
     }
-  }
+  } 
+  
+  
 
   function dispatchMove(direction) {
     store.dispatch({
@@ -46,4 +48,13 @@ export default function PlayerMovement(Player) {
     handleKeyDown(e);
   });
   return Player;
+}
+
+
+export function dispatchOtherPlayerMove(direction){
+    console.log(direction)
+    store.dispatch({
+        type: "MOVE_OTHERPLAYER",
+        payload: direction
+    })
 }
