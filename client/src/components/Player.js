@@ -14,7 +14,6 @@ class Player extends Component {
   
 
   render() {
-    console.log(this.props.position)
     return (
       <div>
       {!this.props && "loading..."}

@@ -13,6 +13,11 @@ export const newPlayer = () => {
         },
 
     )
+    console.log(String(socket.id))
+    store.dispatch({
+        type: "ADD_PLAYERID",
+        payload: String(socket.id)
+    })
 }
 
 socket.on('update-players', data => {

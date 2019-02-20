@@ -21,18 +21,10 @@ const players = {
 }
 
 
-
-
-
-// Server is working, controller /test is working.
 io.on("connection", function(socket) {
 
-    // When a player connects
   socket.on('new-player', state => {
-      console.log('New player joined with state:', state)
       players[socket.id] = state
-      console.log(players)
-      // Emit the update-players method in the client side
       io.emit('update-players', players)
     })
 
@@ -57,7 +49,7 @@ io.on("connection", function(socket) {
 
 
   socket.on("disconnect", () => {
-    console.log(`User  just disconnected`)
+    console.log(`User just disconnected`)
     delete players[socket.id]
     io.emit('update-players', players)
     ;
