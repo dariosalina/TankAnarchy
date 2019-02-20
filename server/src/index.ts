@@ -16,35 +16,40 @@ useKoaServer(app, {
 });
 
 
-// let players = {
+const players = {
+  id: ''
+}
 
-// };
+
+
 
 
 // Server is working, controller /test is working.
 io.on("connection", function(socket) {
-  console.log(`User ${socket.id} just connected`);
+
+    // When a player connects
+  socket.on('new-player', state => {
+      console.log('New player joined with state:', state)
+      players[socket.id] = state
+      // Emit the update-players method in the client side
+      io.emit('update-players', players)
+    })
+
+  // console.log(`User ${socket.id} just connected`);
+    
+
+
+  // io.emit('player-connected',players)
   
-
-  io.emit('player-connected', socket.id)
-  
-
-
   socket.broadcast.on("movement", data => {
-
-    socket.broadcast.emit('move-completed', data)
-
-  
-  socket.on("movement", data => {
-    console.log(socket.id)
     const playerMovement = {
-      id: socket.id,
+      id: players.id,
       position: data.position
     }
     // console.log(socket.id)
     // player = data
     // console.log(data)
-    io.emit('move-completed', playerMovement);
+    socket.broadcast.emit('move-completed', playerMovement);
 
   });
 

@@ -3,18 +3,21 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000/');
 
 receivePlayerData()
+playerConnected()
 
-export function playerConnected() {
+
+function playerConnected() {
     socket.on('player-connected', (data) => {
     console.log(data)
 
   })
 }
 
-
 export function receivePlayerData() {
     
   socket.on('move-completed', (data) => {
+
+    console.log(data)
  
   return dispatchOtherPlayerMove(data.position)
   })
@@ -23,7 +26,6 @@ export function receivePlayerData() {
 
 
 function dispatchOtherPlayerMove(direction){
-    console.log(direction)
     store.dispatch({
         type: "MOVE_OTHERPLAYER",
         payload: {position: direction}

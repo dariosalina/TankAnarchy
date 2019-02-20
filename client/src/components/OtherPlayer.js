@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {receivePlayerData} from '../actions/otherPlayerMovement'
 
-receivePlayerData()
+
+
 
 class OtherPlayer extends Component {
   
@@ -32,7 +32,6 @@ class OtherPlayer extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
   return {
     ...state.otherPlayer
   };
