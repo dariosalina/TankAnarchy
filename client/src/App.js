@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import Map from './components/map'
-import './App.css';
-// import {connect} from './api/index'
-
+import React, { Component } from "react";
+import Game from './components/Game'
+import "./App.css";
+import { Stage } from "react-konva";
 
 class App extends Component {
-
-  render(){
-  return (
-      <div className="App">
-        <Map />
-      </div>
+  render() {
+    return (
+      <Stage
+        className="App"
+        width={window.innerWidth}
+        height={window.innerHeight}
+      >
+        <Game />
+      </Stage>
     );
-  }}
-
+  }
+}
 
 export default App;

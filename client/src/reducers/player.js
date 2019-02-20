@@ -24,4 +24,23 @@ const playerReducer = (state = inititalState, action) => {
     }
 }
 
+const bulletReducer = (state = inititalState, action) => {
+
+    switch(action.type) {
+        case 'SHOOT_BULLET':
+        socket.emit('movement', ({position:action.payload.position, direction:action.payload.position}))
+
+            return {
+                ...action.payload
+            }
+        default:  
+            return state
+    }
+}
+
+
+
+
+
+
 export default playerReducer

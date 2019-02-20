@@ -6,12 +6,14 @@ import {receivePlayerData} from '../actions/otherPlayerMovement'
 // receivePlayerData()
 // playerConnected()
 import Panther from './Panther.png'
+import BulletContainer from './Bullet'
 
 receivePlayerData()
 
-
 class Player extends Component {
   
+  
+
 
   render() {
     return (
@@ -28,6 +30,7 @@ class Player extends Component {
         }}
       >
         {/* Player 1  */}
+        <BulletContainer />
       </div>
     );
   }
