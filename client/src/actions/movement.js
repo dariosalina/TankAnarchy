@@ -17,13 +17,12 @@ export default function PlayerMovement(Player) {
       default:
         return console.log("not working");
     }
-  } 
+  }
 
   function getNewDirection(direction) {
-    
     switch (direction) {
       case "WEST":
-        return  270;
+        return 270;
       case "SOUTH":
         return 180;
       case "NORTH":
@@ -35,7 +34,6 @@ export default function PlayerMovement(Player) {
     }
   }
 
-
   function dispatchMove(direction) {
     store.dispatch({
       type: "MOVE_PLAYER",
@@ -46,14 +44,12 @@ export default function PlayerMovement(Player) {
     });
   }
 
-function shootBullet(){
-  
-  const bullet = new Bullet()
+  function shootBullet() {
+    const bullet = new Bullet();
 
-  console.log('bullet', bullet)
-  return bullet
-}
-
+    console.log("bullet", bullet);
+    return bullet;
+  }
 
   function handleKeyDown(e) {
     e.preventDefault();
@@ -67,7 +63,7 @@ function shootBullet(){
       case 40:
         return dispatchMove("SOUTH");
       case 32:
-     return shootBullet();
+        return shootBullet();
       default:
         return console.log("handleKeyDonw");
     }
@@ -79,44 +75,35 @@ function shootBullet(){
   return Player;
 }
 
-
-
-export function dispatchOtherPlayerMove(direction){
-    console.log(direction)
-    store.dispatch({
-        type: "MOVE_OTHERPLAYER",
-        payload: direction
-    })
+export function dispatchOtherPlayerMove(direction) {
+  console.log(direction);
+  store.dispatch({
+    type: "MOVE_OTHERPLAYER",
+    payload: direction
+  });
 }
-
-
-
-
-
 
 // window.addEventListener("keydown", e => {
 //   handleKeyDown(e);
 // });
- 
+
 //   //function onclick space bar to shoot->create bullet
 //   handleKeyDown = (e) => {
 //     e.preventDefault();
 //     switch (e.keyCode) {
 //       case 32:
-//         return shootBullet() 
-  // function renderBulletComponent(){
-    
- 
-  //     return (<div><BulletContainer /></div>)
-  // }
-      // console.log('bullet')
-      // <Bullet position={this.props.position} direction={this.props.direction}/>
-     ;
+//         return shootBullet()
+// function renderBulletComponent(){
+
+//     return (<div><BulletContainer /></div>)
+// }
+// console.log('bullet')
+// <Bullet position={this.props.position} direction={this.props.direction}/>
 //       default:
 //         return console.log("handleKeyDonw");
 //     }
 //   }
-  
+
 // function shootBullet() {
 //   //create a bullet component moving from player position and according to the direction
 //   return (<div><Bullet position={this.props.position} direction={this.props.direction}/></div>)

@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
-import {receivePlayerData} from '../actions/otherPlayerMovement'
+import { receivePlayerData } from "../actions/otherPlayerMovement";
 // import {playerConnected} from '../actions/otherPlayerMovement'
 // receivePlayerData()
 // playerConnected()
-import Panther from './Panther.png'
-import BulletContainer from './Bullet'
+import Panther from "./Panther.png";
+import BulletContainer from "./Bullet";
 
-receivePlayerData()
+receivePlayerData();
 
 class Player extends Component {
-  
-  
-
-
   render() {
     return (
       <div
@@ -30,7 +26,7 @@ class Player extends Component {
         }}
       >
         {/* Player 1  */}
-        <BulletContainer />
+      
       </div>
     );
   }

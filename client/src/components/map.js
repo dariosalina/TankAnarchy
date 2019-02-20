@@ -1,9 +1,8 @@
 import React, { PureComponent } from "react";
 // import Player from "./Player";
 // import OtherPlayer from "./OtherPlayer";
-import sand_template from './sand_template.jpg'
+import sand_template from "./sand_template.jpg";
 import { Group, Rect } from "react-konva";
-
 
 export const WIDTH = 800;
 export const HEIGHT = 600;
@@ -19,9 +18,8 @@ export default class Field extends PureComponent {
           fill="rgb(0,0,0)"
           shadowBlur={2}
           // border: "4px solid black",
-          fillPatternImage= {sand_template}
+          fillPatternImage={sand_template}
         />
-        
       </Group>
     );
   }

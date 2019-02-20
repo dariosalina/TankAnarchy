@@ -1,25 +1,19 @@
 import React, { PureComponent } from "react";
 import Konva from "konva";
 import { Circle } from "react-konva";
-// import { WIDTH, HEIGHT } from "./Field";
+// import { WIDTH, HEIGHT } from "./map";
+import { connect } from "react-redux";
 
-const MIN_X = 12,
-  MIN_Y = 12,
-  MAX_X = 600,
-  MAX_Y = 800,
-  SPEED = 30;
+const SPEED = 30;
 
-export default class Bullet extends PureComponent {
-  
-  
-  
-    state = {
+class Bullet extends PureComponent {
+  state = {
     // bulletimage
     // color: Konva.Util.getRandomColor(),
     // add origin from player state(mapstate to props)
-    x: MIN_X,
-    y: MIN_Y,
-    
+    x: 50,
+    y: 50,
+
     direction: { x: 0, y: 0 }
   };
 
@@ -28,7 +22,7 @@ export default class Bullet extends PureComponent {
     const y = SPEED - x;
     this.setState({ direction: { x, y } });
     this.animate();
-    console.log('been shoot!')
+    console.log("been shoot!");
   }
 
   newCoord = (val, delta, max, min) => {
@@ -53,8 +47,8 @@ export default class Bullet extends PureComponent {
     const { direction, x, y } = this.state;
 
     if (direction.x !== 0 || direction.y !== 0) {
-      const newX = this.newCoord(x, direction.x, MAX_X, MIN_X);
-      const newY = this.newCoord(y, direction.y, MAX_Y, MIN_Y);
+      const newX = this.newCoord(x, direction.x, 600, 600);
+      const newY = this.newCoord(y, direction.y, 600, 600);
 
       this.setState({
         x: newX.val,
@@ -69,20 +63,18 @@ export default class Bullet extends PureComponent {
     this.animationTimeout = setTimeout(this.animate, 50);
   };
 
-
-  
   render() {
-    const { color, x, y } = this.state;
+    const { x, y } = this.state;
 
     return (
-      <Circle 
+      <Circle
         ref={comp => {
           this.ball = comp;
         }}
         x={x}
         y={y}
         radius={10}
-        fill={color}
+        // fill={color}
         shadowBlur={1}
       />
     );
@@ -93,4 +85,11 @@ export default class Bullet extends PureComponent {
   }
 }
 
+function mapStateToProps(state) {
+  console.log(state)
+  return {
+    ...state.player
+  };
+}
 
+export default connect(mapStateToProps)(Bullet);

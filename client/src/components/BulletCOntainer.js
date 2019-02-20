@@ -3,13 +3,8 @@
 
 // // import { connect } from "react-redux";
 
-
-
 // export class BulletContainer extends PureComponent {
-   
 
-    
-    
 //     renderBulletComponent(){
 
 //         console.log('bullet')
@@ -22,7 +17,7 @@
 //     render() {
 //          return <div onClick={this.renderBulletComponent}></div>
 //     }
-    
+
 // }
 
 // window.addEventListener("onClick", e => {
