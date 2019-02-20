@@ -4,7 +4,7 @@ import OtherPlayer from "./OtherPlayer";
 import sand_template from './sand_template.jpg'
 
 
-function Map(props) {
+function Map() {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ function Map(props) {
       }}
     >
       <Player />
-      <OtherPlayer />
+      {/* <OtherPlayer /> */}
     </div>
   );
 }

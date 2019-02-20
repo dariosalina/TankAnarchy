@@ -1,6 +1,4 @@
-const inititalState = {
-    players: {}
-}
+const inititalState = {}
 
 export const addPlayer = (state = inititalState, action) => {
     switch(action.type) {

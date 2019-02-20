@@ -7,16 +7,33 @@ import './App.css';
 
 class App extends Component {
 
+  state = {
+    displayMap: false,
+  }
+
+  // displayMap = () => {
+  //   this.setState({
+  //     display.
+  //   })
+  // }
+
   render(){
+   
   return (
-      <div className="App">
-      <button onClick={() =>newPlayer()}>
-  Start the game
-</button>
-        <Map />
+    <div> 
+      <div>
+      <button onClick={() =>console.log('test')}>Display map</button>
+      <button onClick={() =>newPlayer()}>Start the game</button>
+      </div>
+      {(!this.displayMap)} {
+        <div>
+          <Map />
+          </div>
+      }}
       </div>
     );
   }}
+
 
 
 export default App;

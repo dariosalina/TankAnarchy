@@ -7,23 +7,34 @@ import {receivePlayerData} from '../actions/otherPlayerMovement'
 // playerConnected()
 import Tank from './Tank.png'
 
-receivePlayerData()
-
 
 class Player extends Component {
-  
+
+  // [`${playersID}`]
 
   render() {
+    console.log('props',this.props)
+    if (!Object.keys(this.props.players.length === 0)){return  "loading..."}
+   
+    const {playersID, players} = this.props
+
+    if(!players[playersID]) {return 'loading...'}
+
+    console.log(players[playersID].position)
+
+    // console.log(playersID)
+    // console.log(players.playersID.position)
     return (
+   
       <div>
-      {!this.props && "loading..."}
+  
       <div
         style={{
-          position: "relative",
-          top: 1,
-          left: 1,
+          position: 'absolute',
+          top: players[playersID].position[0],
+          left: players[playersID].position[1],
           backgroundImage: `url(${Tank})`,
-          transform: `rotate(${this.props.direction}deg)`,
+          transform: `rotate(${this.props.players.direction}deg)`,
           color: "white",
           width: 60,
           height: 50
@@ -34,7 +45,7 @@ class Player extends Component {
       </div>
     )
   }
-}
+  }
 
 function mapStateToProps(state) {
   return {
