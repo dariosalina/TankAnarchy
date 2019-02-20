@@ -18,8 +18,8 @@ class Player extends Component {
       <div
         style={{
           position: "relative",
-          top: this.props.position[1],
-          left: this.props.position[0],
+          // top: this.props.position[1],
+          // left: this.props.position[0],
           backgroundImage: `url(${Tank})`,
           transform: `rotate(${this.props.direction}deg)`,
           // color: "white",

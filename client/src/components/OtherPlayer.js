@@ -16,8 +16,8 @@ class OtherPlayer extends Component {
       <div
         style={{
           position: "relative",
-          top: this.props.position[1],
-          left: this.props.position[0],
+          // top: this.props.position[1],
+          // left: this.props.position[0],
           backgroundColor: "red",
           color: "white",
           width: 40,

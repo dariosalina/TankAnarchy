@@ -17,7 +17,7 @@ useKoaServer(app, {
 
 
 const players = {
-  id: ''
+
 }
 
 
@@ -31,6 +31,7 @@ io.on("connection", function(socket) {
   socket.on('new-player', state => {
       console.log('New player joined with state:', state)
       players[socket.id] = state
+      console.log(players)
       // Emit the update-players method in the client side
       io.emit('update-players', players)
     })
@@ -43,7 +44,7 @@ io.on("connection", function(socket) {
   
   socket.broadcast.on("movement", data => {
     const playerMovement = {
-      id: players.id,
+      // id: players.id,
       position: data.position
     }
     // console.log(socket.id)
