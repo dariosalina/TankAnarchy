@@ -53,5 +53,5 @@ io.on("connection", function(socket) {
     console.log(`User  just disconnected`);
   });
 });
-
+})
 server.listen(port, () => console.log(`Listening on port ${port}`));

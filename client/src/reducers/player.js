@@ -3,6 +3,7 @@ const socket = openSocket('http://localhost:5000/');
 
 
 const inititalState = {
+    id: '',
     position: [0,0],
     direction : ''
 }

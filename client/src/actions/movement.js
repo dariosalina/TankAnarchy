@@ -21,13 +21,13 @@ export default function PlayerMovement(Player) {
     
     switch (direction) {
       case "WEST":
-        return  0;
+        return  270;
       case "SOUTH":
-        return 270;
-      case "NORTH":
-        return 90;
-      case "EAST":
         return 180;
+      case "NORTH":
+        return 0;
+      case "EAST":
+        return 90;
       default:
         return console.log("not working");
     }
