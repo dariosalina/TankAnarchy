@@ -9,25 +9,12 @@ import Tank from './Tank.png'
 
 
 class Player extends Component {
-
-  // [`${playersID}`]
-
   render() {
-    console.log('props',this.props)
-    if (!Object.keys(this.props.players.length === 0)){return  "loading..."}
-   
+
     const {playersID, players} = this.props
 
     if(!players[playersID]) {return 'loading...'}
-
-    console.log(players[playersID].position)
-
-    // console.log(playersID)
-    // console.log(players.playersID.position)
     return (
-   
-      <div>
-  
       <div
         style={{
           position: 'absolute',
@@ -41,7 +28,6 @@ class Player extends Component {
         }}
       >
         {/* Player 1  */}
-      </div>
       </div>
     )
   }

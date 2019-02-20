@@ -2,7 +2,8 @@ import store from "../store";
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
-    const oldPos = store.getState().player.position;
+    const state = store.getState();
+    const oldPos = state.players[state.playersID].position
     switch (direction) {
       case "WEST":
         return [oldPos[0] - 40, oldPos[1]];
@@ -18,7 +19,6 @@ export default function PlayerMovement(Player) {
   } 
 
   function getNewDirection(direction) {
-    
     switch (direction) {
       case "WEST":
         return  0;
@@ -34,13 +34,19 @@ export default function PlayerMovement(Player) {
   }
 
   function dispatchMove(direction) {
+    const playersID = store.getState().playersID
+   
     store.dispatch({
       type: "MOVE_PLAYER",
-      payload: {
+      payload: 
+      {playersID :
+      {
         position: getNewPosition(direction),
         direction: getNewDirection(direction)
       }
-    });
+    }
+    }
+    );
   }
 
   function handleKeyDown(e) {
