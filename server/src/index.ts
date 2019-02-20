@@ -36,6 +36,7 @@ io.on("connection", function(socket) {
       io.emit('update-players', players)
     })
 
+   
   // console.log(`User ${socket.id} just connected`);
     
 
@@ -56,7 +57,10 @@ io.on("connection", function(socket) {
 
 
   socket.on("disconnect", () => {
-    console.log(`User  just disconnected`);
+    console.log(`User  just disconnected`)
+    delete players[socket.id]
+    io.emit('update-players', players)
+    ;
   });
 });
 
