@@ -1,7 +1,8 @@
 import store from "../store";
 import openSocket from 'socket.io-client';
+// import Bullet from "../components/bullet";
 const socket = openSocket('http://localhost:5000/');
-import Bullet from "../components/bullet";
+
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -35,10 +36,17 @@ export default function PlayerMovement(Player) {
     }
   }
 
+  function checkBoundaries(oldPos, newPos){
+    return (newPos[0] >= 0 && newPos[0] <= 780) &&
+           (newPos[1] >=0 && newPos[1] <= 560)
+            ? newPos : oldPos
+  }
+
   function dispatchMove(direction) {
+    const oldPos = store.getState().player.position
 
     const playerMovement = {
-      position: getNewPosition(direction),
+      position: checkBoundaries(oldPos, getNewPosition(direction)),
       direction: getNewDirection(direction)
     }
     store.dispatch({
@@ -79,7 +87,7 @@ function bulletAnimation(bullet) {
 
 
   function shootBullet() {
-    const bullet = new Bullet()
+    // const bullet = new Bullet()
     bulletAnimation()
     console.log(bulletAnimation())
   }
