@@ -1,7 +1,8 @@
 import store from "../store";
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000/');
-import Bullet from "../components/bullet";
+import openSocket from "socket.io-client";
+
+
+const socket = openSocket("http://localhost:5000/");
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -36,52 +37,19 @@ export default function PlayerMovement(Player) {
   }
 
   function dispatchMove(direction) {
-
     const playerMovement = {
       position: getNewPosition(direction),
       direction: getNewDirection(direction)
-    }
+    };
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: playerMovement
-    })
-    socket.emit('movement', (socket.id, {playerMovement}))
-    console.log('movement from client to server with ID',socket.id);
+    });
+    socket.emit("movement", (socket.id, { playerMovement }));
     store.dispatch({
       type: "ADD_PLAYERID",
       payload: String(socket.id)
-    })
-  }
-function bulletAnimation(bullet) {
-  let start = Date.now(); // remember start time
-  let bulletOrigin = [...store.getState().player.position]
-  let timer = setInterval(function() {
-    // how much time passed from the start?
-    let timePassed = Date.now() - start;
-
-    if (timePassed >= 1000) {
-      clearInterval(timer); // finish the animation after 2 seconds
-      return;
-    }
-
-    // draw the animation at the moment timePassed
-    draw(timePassed);
-  }, 20);
-  
-  // as timePassed goes from 0 to 2000
-  // left gets values from 0px to 400px
-  function draw(timePassed) {
-    
-     bulletOrigin[0] = timePassed / 5 + 'px';
-    console.log(bulletOrigin) 
-  }
-}
-
-
-  function shootBullet() {
-    const bullet = new Bullet()
-    bulletAnimation()
-    console.log(bulletAnimation())
+    });
   }
 
   function handleKeyDown(e) {
@@ -96,7 +64,7 @@ function bulletAnimation(bullet) {
       case 40:
         return dispatchMove("SOUTH");
       case 32:
-        return shootBullet();
+        return dropBullet();
       default:
         return console.log("handleKeyDonw");
     }
@@ -108,11 +76,19 @@ function bulletAnimation(bullet) {
   return Player;
 }
 
-export function dispatchOtherPlayerMove(direction){
-    console.log(direction)
-    store.dispatch({
-        type: "MOVE_OTHERPLAYER",
-        payload: direction
-    })
+export function dropBullet() {
+  const oldPosX = store.getState().player.position[0];
+  const oldPosy = store.getState().player.position[1];
+  store.dispatch({
+    type: "DROP_MINE",
+    payload: { oldPosX, oldPosy }
+  });
+}
+
+export function dispatchOtherPlayerMove(direction) {
+  store.dispatch({
+    type: "MOVE_OTHERPLAYER",
+    payload: direction
+  });
 }
 
