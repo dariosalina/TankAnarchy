@@ -9,6 +9,8 @@ function Map() {
   return (
     <div
       style={{
+        margin: '5px',
+        padding: '5px',
         height: "600px",
         width: "800px",
         border: "4px solid black",
@@ -17,7 +19,7 @@ function Map() {
     >
       <Player />
       <OtherPlayer />
-      <Bullet/>
+      {/* <Bullet/> */}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import bullet from "./bullet.png";
 
+
 class Bullet extends Component {
   render() {
     const mines = this.props.mines;

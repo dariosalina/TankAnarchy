@@ -1,8 +1,7 @@
 import store from "../store";
-import openSocket from "socket.io-client";
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000/');
 
-
-const socket = openSocket("http://localhost:5000/");
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -36,9 +35,17 @@ export default function PlayerMovement(Player) {
     }
   }
 
+  function checkBoundaries(oldPos, newPos){
+    return (newPos[0] >= 0 && newPos[0] <= 780) &&
+           (newPos[1] >=0 && newPos[1] <= 560)
+            ? newPos : oldPos
+  }
+
   function dispatchMove(direction) {
+    const oldPos = store.getState().player.position
+
     const playerMovement = {
-      position: getNewPosition(direction),
+      position: checkBoundaries(oldPos, getNewPosition(direction)),
       direction: getNewDirection(direction)
     };
     store.dispatch({
@@ -49,8 +56,10 @@ export default function PlayerMovement(Player) {
     store.dispatch({
       type: "ADD_PLAYERID",
       payload: String(socket.id)
-    });
+
+    })
   }
+
 
   function handleKeyDown(e) {
     e.preventDefault();
