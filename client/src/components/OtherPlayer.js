@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
-import Panzer from './PanzerIV.png'
+import T34 from './T-34-85.png'
 receivePlayerData()
 
 class OtherPlayer extends Component {
@@ -18,7 +18,7 @@ class OtherPlayer extends Component {
           position: "relative",
           top: this.props.position[1],
           left: this.props.position[0],
-          backgroundImage: `url(${Panzer})`,
+          backgroundImage: `url(${T34})`,
           // transform: `rotate(${this.props.direction}deg)`,
           width: 60,
           height: 95
