@@ -87,14 +87,14 @@ export default function PlayerMovement(Player) {
 }
 
 export function calculateDistance() {
-  const PlayerPosX = store.getState().player.position[0];
-  const PlayerPosY = store.getState().player.position[1];
+  const PlayerPosX = store.getState().player.position[0]-30;
+  const PlayerPosY = store.getState().player.position[1]-40;
   const minesArray = store.getState().mines
   const mineDistance = minesArray.map((mine)=>{
     const mineX = mine.oldPosX
     const mineY = mine.oldPosy
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<50){return alert('boom')}})
+    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return alert('boom')}})
 }
 
 

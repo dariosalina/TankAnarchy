@@ -7,8 +7,17 @@ class App extends Component {
 
   render(){
   return (
-      <div className="App">
-        <Map />
+      <div className="App"
+      style={
+        {backgroundColor :'#d1ffa3',
+      }}>
+        <header
+        style={
+          {fontSize:30,
+        }}>TankAnarchy</header>
+       
+      <Map />
+      
       </div>
     );
   }}
