@@ -9,9 +9,6 @@ class Player extends Component {
     return (
       <div
         style={{
-          borderStyle:'solid',
-          margin: 0,
-          padding: 0,
           display: 'inline-block',
           position: "absolute",
           top: this.props.position[1]-45,

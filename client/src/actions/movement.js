@@ -36,8 +36,8 @@ export default function PlayerMovement(Player) {
   }
 
   function checkBoundaries(oldPos, newPos){
-    return (newPos[0] >= 0 && newPos[0] <= 780) &&
-           (newPos[1] >=0 && newPos[1] <= 560)
+    return (newPos[0] >= 5 && newPos[0] <= 795) &&
+           (newPos[1] >=5 && newPos[1] <= 595)
             ? newPos : oldPos
   }
 
@@ -102,3 +102,6 @@ export function dispatchOtherPlayerMove(direction) {
   });
 }
 
+export function dispatchOtherPlayerMine(direction) {
+  
+}
