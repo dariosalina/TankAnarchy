@@ -92,6 +92,7 @@ export function dropBullet() {
     type: "DROP_MINE",
     payload: { oldPosX, oldPosy }
   });
+  socket.emit("drop-mine", (socket.id, { oldPosX, oldPosy }))
 }
 
 export function dispatchOtherPlayerMove(direction) {

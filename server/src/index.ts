@@ -36,6 +36,15 @@ io.on("connection", function(socket) {
     io.emit("move-completed", newData)
 
   });
+  socket.on("drop-mine", data => {
+    const updatedMine = {
+      ID: socket.id,
+      payload: data
+    }
+    console.log(updatedMine)
+    io.emit("mines-to-client", updatedMine )
+
+  });
 
   socket.on("disconnect", () => {
     console.log(`User  just disconnected`);

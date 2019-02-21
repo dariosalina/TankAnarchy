@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import bullet from "./bullet.png";
-
+import {reveivePlayersMines} from '../actions/otherPlayerMovement'
 
 class Bullet extends Component {
+
+  componentDidMount(){
+    reveivePlayersMines()
+  }
+
   render() {
     const mines = this.props.mines;
     return (
@@ -11,7 +16,8 @@ class Bullet extends Component {
         {mines.map(mine => (
           <div
             style={{
-              position: "relative",
+              position: "absolute",
+              display: 'inline-block',
               top: mine.oldPosy,
               left: mine.oldPosX,
               backgroundImage: `url(${bullet})`,

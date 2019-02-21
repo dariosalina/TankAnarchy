@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import receivePlayerData from '../actions/otherPlayerMovement'
+import {receivePlayerData} from '../actions/otherPlayerMovement'
 import T34 from './T-34-85.png'
 
 class OtherPlayer extends Component {
