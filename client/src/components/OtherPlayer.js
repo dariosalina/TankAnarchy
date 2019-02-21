@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
-import T34 from './T-34-85.png'
+import BTank from './BTank.png'
 
 class OtherPlayer extends Component {
   
@@ -19,13 +19,13 @@ class OtherPlayer extends Component {
       <div
         style={{
           position: "absolute",
-          top: this.props.position[1]-45,
+          top: this.props.position[1]-40,
           left: this.props.position[0]-30,
           transform: `rotate(${this.props.direction}deg)`,
-          backgroundImage: `url(${T34})`,
+          backgroundImage: `url(${BTank})`,
           // transform: `rotate(${this.props.direction}deg)`,
           width: 60,
-          height: 90
+          height: 80
         }}
       >
         {/* Player2 */}
