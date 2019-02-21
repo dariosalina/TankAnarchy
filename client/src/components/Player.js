@@ -12,9 +12,10 @@ class Player extends Component {
     return (
       <div
         style={{
+          display: 'inline-block',
           position: "absolute",
-          top: this.props.position[1],
-          left: this.props.position[0],
+          top: this.props.position[1]-45,
+          left: this.props.position[0]-30,
           backgroundImage: `url(${Panther})`,
           transform: `rotate(${this.props.direction}deg)`,
           width: 60,

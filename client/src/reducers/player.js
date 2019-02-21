@@ -1,6 +1,5 @@
 const inititalState = {
-    id: '',
-    position: [0,0],
+    position: [200,200],
     direction : ''
 }
 
