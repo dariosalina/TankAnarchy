@@ -16,6 +16,10 @@ class Bullet extends Component {
         {mines.map(mine => (
           <div
             style={{
+              alignContent:'center',
+              border: 2,
+              // padding: 25,
+              borderStyle: 'solid',
               position: "absolute",
               display: 'inline-block',
               top: mine.oldPosy,
@@ -23,6 +27,7 @@ class Bullet extends Component {
               backgroundImage: `url(${bullet})`,
               width: 10,
               height: 10
+        
             }}
           />
         ))}

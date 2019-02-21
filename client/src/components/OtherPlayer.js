@@ -19,12 +19,13 @@ class OtherPlayer extends Component {
       <div
         style={{
           position: "absolute",
-          top: this.props.position[1],
-          left: this.props.position[0],
+          top: this.props.position[1]-45,
+          left: this.props.position[0]-30,
+          transform: `rotate(${this.props.direction}deg)`,
           backgroundImage: `url(${T34})`,
           // transform: `rotate(${this.props.direction}deg)`,
           width: 60,
-          height: 95
+          height: 90
         }}
       >
         {/* Player2 */}
