@@ -94,8 +94,7 @@ export function calculateDistance() {
     const mineX = mine.oldPosX
     const mineY = mine.oldPosy
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-console.log(mineDistance)
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return alert('boom')}})
+    mineDistance.splice(-1, 1).map( (dis) => {if(dis<50){return alert('boom')}})
 }
 
 
