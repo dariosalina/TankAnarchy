@@ -1,23 +1,32 @@
-import React from "react";
-// import { connect } from "react-redux";
-import bullet from './bullet.png'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import bullet from "./bullet.png";
 
 
-export default class Bullet {
-    
-    render (){
-        return (
-            <div
+class Bullet extends Component {
+  render() {
+    const mines = this.props.mines;
+    return (
+      <div>
+        {mines.map(mine => (
+          <div
             style={{
-                
-                // top: this.props.position[1],
-                // left: this.props.position[0],
-                backgroundImage: `url(${bullet})`,
-                // transform: `rotate(${this.props.direction}deg)`,
-                // color: "white",
-                width: 10,
-                height: 10
-              }}></div>
-        )
-    }
+              position: "relative",
+              top: mine.oldPosy,
+              left: mine.oldPosX,
+              backgroundImage: `url(${bullet})`,
+              width: 10,
+              height: 10
+            }}
+          />
+        ))}
+      </div>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return { ...state };
+}
+
+export default connect(mapStateToProps)(Bullet);
