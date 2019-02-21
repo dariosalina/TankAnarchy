@@ -94,10 +94,22 @@ export function calculateDistance() {
     const mineX = mine.oldPosX
     const mineY = mine.oldPosy
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-console.log(mineDistance)
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return alert('boom')}})
+    console.log(PlayerPosX,PlayerPosY )
+    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return Explosion(PlayerPosX,PlayerPosY)}})
 }
 
+function Explosion(PlayerPosX,PlayerPosY){
+  const explosionPosition = {
+    y: PlayerPosX,
+    x: PlayerPosY
+  }
+  console.log(explosionPosition)
+  store.dispatch({
+    type: "EXPLOSION",
+    payload: explosionPosition
+  });
+  return alert(explosionPosition)
+}
 
 
 
