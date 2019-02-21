@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
 import Panther from './Panther.png'
+import calculateDistance from '../actions/movement'
 
 class Player extends Component {
+
+
 
   render() {
     return (
@@ -15,12 +18,11 @@ class Player extends Component {
           left: this.props.position[0]-30,
           backgroundImage: `url(${Panther})`,
           transform: `rotate(${this.props.direction}deg)`,
-          // color: "white",
           width: 60,
           height: 90
         }}
       >
-        {/* Player 1  */}
+        
       </div>
     );
   }

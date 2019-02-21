@@ -40,13 +40,14 @@ export default function PlayerMovement(Player) {
            (newPos[1] >=5 && newPos[1] <= 595)
             ? newPos : oldPos
   }
-
+  calculateDistance()
   function dispatchMove(direction) {
     const oldPos = store.getState().player.position
 
     const playerMovement = {
       position: checkBoundaries(oldPos, getNewPosition(direction)),
       direction: getNewDirection(direction)
+    
     };
     store.dispatch({
       type: "MOVE_PLAYER",
@@ -65,13 +66,13 @@ export default function PlayerMovement(Player) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-        return dispatchMove("WEST");
+        return dispatchMove("WEST") & calculateDistance();
       case 38:
-        return dispatchMove("NORTH");
+        return dispatchMove("NORTH") & calculateDistance();
       case 39:
-        return dispatchMove("EAST");
+        return dispatchMove("EAST") & calculateDistance();
       case 40:
-        return dispatchMove("SOUTH");
+        return dispatchMove("SOUTH") & calculateDistance();
       case 32:
         return dropBullet();
       default:
@@ -84,6 +85,21 @@ export default function PlayerMovement(Player) {
   });
   return Player;
 }
+
+export function calculateDistance() {
+  const PlayerPosX = store.getState().player.position[0];
+  const PlayerPosY = store.getState().player.position[1];
+  const minesArray = store.getState().mines
+  const mineDistance = minesArray.map((mine)=>{
+    const mineX = mine.oldPosX
+    const mineY = mine.oldPosy
+    return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
+console.log(mineDistance)
+    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return alert('boom')}})
+}
+
+
+
 
 export function dropBullet() {
   const oldPosX = store.getState().player.position[0];

@@ -9,6 +9,7 @@ class Bullet extends Component {
     reveivePlayersMines()
   }
 
+
   render() {
     const mines = this.props.mines;
     return (
