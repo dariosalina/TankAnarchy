@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {receivePlayerData} from '../actions/otherPlayerMovement'
 import T34 from './T-34-85.png'
-receivePlayerData()
 
 class OtherPlayer extends Component {
+  
+  componentDidMount() {
+    receivePlayerData()
+  }
   
 
   render() {
@@ -15,7 +18,7 @@ class OtherPlayer extends Component {
              
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           top: this.props.position[1],
           left: this.props.position[0],
           backgroundImage: `url(${T34})`,
@@ -32,7 +35,6 @@ class OtherPlayer extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
   return {
     ...state.otherPlayer
   };

@@ -5,7 +5,7 @@ import sand_template from './sand_template.jpg'
 import Bullet from "./bullet";
 
 
-function Map(props) {
+function Map() {
   return (
     <div
       style={{

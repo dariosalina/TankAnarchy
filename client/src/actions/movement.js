@@ -1,4 +1,6 @@
 import store from "../store";
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000/');
 import Bullet from "../components/bullet";
 
 export default function PlayerMovement(Player) {
@@ -34,13 +36,21 @@ export default function PlayerMovement(Player) {
   }
 
   function dispatchMove(direction) {
+
+    const playerMovement = {
+      position: getNewPosition(direction),
+      direction: getNewDirection(direction)
+    }
     store.dispatch({
       type: "MOVE_PLAYER",
-      payload: {
-        position: getNewPosition(direction),
-        direction: getNewDirection(direction)
-      }
-    });
+      payload: playerMovement
+    })
+    socket.emit('movement', (socket.id, {playerMovement}))
+    console.log('movement from client to server with ID',socket.id);
+    store.dispatch({
+      type: "ADD_PLAYERID",
+      payload: String(socket.id)
+    })
   }
 function bulletAnimation(bullet) {
   let start = Date.now(); // remember start time
@@ -98,10 +108,11 @@ function bulletAnimation(bullet) {
   return Player;
 }
 
-export function dispatchOtherPlayerMove(direction) {
-  console.log(direction);
-  store.dispatch({
-    type: "MOVE_OTHERPLAYER",
-    payload: direction
-  });
+export function dispatchOtherPlayerMove(direction){
+    console.log(direction)
+    store.dispatch({
+        type: "MOVE_OTHERPLAYER",
+        payload: direction
+    })
 }
+
