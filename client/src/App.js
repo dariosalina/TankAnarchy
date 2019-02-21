@@ -15,9 +15,8 @@ class App extends Component {
         style={
           {fontSize:30,
         }}>TankAnarchy</header>
-       
-      <Map />
-      
+       <Map />
+      <footer>Made with love by Joey&Dario</footer>
       </div>
     );
   }}

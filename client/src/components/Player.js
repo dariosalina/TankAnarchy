@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
 import RTank from './RTank.png'
-import calculateDistance from '../actions/movement'
+
 
 class Player extends Component {
 
