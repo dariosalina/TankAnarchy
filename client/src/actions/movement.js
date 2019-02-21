@@ -1,6 +1,7 @@
 import store from "../store";
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000/');
+import Bullet from "../components/bullet";
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -17,19 +18,18 @@ export default function PlayerMovement(Player) {
       default:
         return console.log("not working");
     }
-  } 
+  }
 
   function getNewDirection(direction) {
-    
     switch (direction) {
       case "WEST":
-        return  0;
-      case "SOUTH":
         return 270;
-      case "NORTH":
-        return 90;
-      case "EAST":
+      case "SOUTH":
         return 180;
+      case "NORTH":
+        return 0;
+      case "EAST":
+        return 90;
       default:
         return console.log("not working");
     }
@@ -52,6 +52,37 @@ export default function PlayerMovement(Player) {
       payload: String(socket.id)
     })
   }
+function bulletAnimation(bullet) {
+  let start = Date.now(); // remember start time
+  let bulletOrigin = [...store.getState().player.position]
+  let timer = setInterval(function() {
+    // how much time passed from the start?
+    let timePassed = Date.now() - start;
+
+    if (timePassed >= 1000) {
+      clearInterval(timer); // finish the animation after 2 seconds
+      return;
+    }
+
+    // draw the animation at the moment timePassed
+    draw(timePassed);
+  }, 20);
+  
+  // as timePassed goes from 0 to 2000
+  // left gets values from 0px to 400px
+  function draw(timePassed) {
+    
+     bulletOrigin[0] = timePassed / 5 + 'px';
+    console.log(bulletOrigin) 
+  }
+}
+
+
+  function shootBullet() {
+    const bullet = new Bullet()
+    bulletAnimation()
+    console.log(bulletAnimation())
+  }
 
   function handleKeyDown(e) {
     e.preventDefault();
@@ -64,6 +95,8 @@ export default function PlayerMovement(Player) {
         return dispatchMove("EAST");
       case 40:
         return dispatchMove("SOUTH");
+      case 32:
+        return shootBullet();
       default:
         return console.log("handleKeyDonw");
     }
@@ -75,13 +108,11 @@ export default function PlayerMovement(Player) {
   return Player;
 }
 
-
-
 export function dispatchOtherPlayerMove(direction){
     console.log(direction)
     store.dispatch({
         type: "MOVE_OTHERPLAYER",
         payload: direction
     })
-
 }
+

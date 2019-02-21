@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
-
-import Tank from './Tank.png'
-
-
-
+import Panther from './Panther.png'
 
 class Player extends Component {
-
 
   render() {
     return (
@@ -17,11 +12,11 @@ class Player extends Component {
           position: "absolute",
           top: this.props.position[1],
           left: this.props.position[0],
-          backgroundImage: `url(${Tank})`,
+          backgroundImage: `url(${Panther})`,
           transform: `rotate(${this.props.direction}deg)`,
           // color: "white",
           width: 60,
-          height: 50
+          height: 90
         }}
       >
         {/* Player 1  */}

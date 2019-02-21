@@ -40,8 +40,7 @@ io.on("connection", function(socket) {
   socket.on("disconnect", () => {
     console.log(`User  just disconnected`);
   });
-
 })
 
-
 server.listen(port, () => console.log(`Listening on port ${port}`))
+

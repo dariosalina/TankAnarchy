@@ -2,6 +2,7 @@ import React from "react";
 import Player from "./Player";
 import OtherPlayer from "./OtherPlayer";
 import sand_template from './sand_template.jpg'
+import Bullet from "./bullet";
 
 
 function Map() {
@@ -16,6 +17,7 @@ function Map() {
     >
       <Player />
       <OtherPlayer />
+      <Bullet/>
     </div>
   );
 }
