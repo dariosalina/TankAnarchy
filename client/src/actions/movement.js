@@ -1,4 +1,6 @@
 import store from "../store";
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000/');
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -34,13 +36,21 @@ export default function PlayerMovement(Player) {
   }
 
   function dispatchMove(direction) {
+
+    const playerMovement = {
+      position: getNewPosition(direction),
+      direction: getNewDirection(direction)
+    }
     store.dispatch({
       type: "MOVE_PLAYER",
-      payload: {
-        position: getNewPosition(direction),
-        direction: getNewDirection(direction)
-      }
-    });
+      payload: playerMovement
+    })
+    socket.emit('movement', (socket.id, {playerMovement}))
+    console.log('movement from client to server with ID',socket.id);
+    store.dispatch({
+      type: "ADD_PLAYERID",
+      payload: String(socket.id)
+    })
   }
 
   function handleKeyDown(e) {
@@ -73,4 +83,5 @@ export function dispatchOtherPlayerMove(direction){
         type: "MOVE_OTHERPLAYER",
         payload: direction
     })
+
 }

@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {receivePlayerData} from '../actions/otherPlayerMovement'
+import receivePlayerData from "../actions/otherPlayerMovement"
 
-receivePlayerData()
 
 class OtherPlayer extends Component {
+  
+  componentDidMount() {
+    receivePlayerData()
+  }
   
 
   render() {
@@ -15,7 +18,7 @@ class OtherPlayer extends Component {
              
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           top: this.props.position[1],
           left: this.props.position[0],
           backgroundColor: "red",
@@ -32,7 +35,6 @@ class OtherPlayer extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
   return {
     ...state.otherPlayer
   };

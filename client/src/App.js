@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Map from './components/map'
 import './App.css';
-// import {connect} from './api/index'
 
 
 class App extends Component {
