@@ -19,7 +19,7 @@ function Map() {
     >
       <Player />
       <OtherPlayer />
-      {/* <Bullet/> */}
+      <Bullet/>
     </div>
   );
 }
