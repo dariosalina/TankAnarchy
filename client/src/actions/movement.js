@@ -8,13 +8,13 @@ export default function PlayerMovement(Player) {
     const oldPos = store.getState().player.position;
     switch (direction) {
       case "WEST":
-        return [oldPos[0] - 30, oldPos[1]];
+        return [oldPos[0] - 20, oldPos[1]];
       case "SOUTH":
-        return [oldPos[0], oldPos[1] + 30];
+        return [oldPos[0], oldPos[1] + 20];
       case "NORTH":
-        return [oldPos[0], oldPos[1] - 30];
+        return [oldPos[0], oldPos[1] - 20];
       case "EAST":
-        return [oldPos[0] + 30, oldPos[1]];
+        return [oldPos[0] + 20, oldPos[1]];
       default:
         return console.log("not working");
     }
