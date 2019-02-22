@@ -65,13 +65,13 @@ export default function PlayerMovement(Player) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-        return dispatchMove("WEST") & calculateDistance();
+        return dispatchMove("WEST") & calculateDistance() & catchCoin();
       case 38:
-        return dispatchMove("NORTH") & calculateDistance();
+        return dispatchMove("NORTH") & calculateDistance() & catchCoin();
       case 39:
-        return dispatchMove("EAST") & calculateDistance();
+        return dispatchMove("EAST") & calculateDistance() & catchCoin();
       case 40:
-        return dispatchMove("SOUTH") & calculateDistance();
+        return dispatchMove("SOUTH") & calculateDistance() & catchCoin();
       case 32:
         return dropBullet();
       default:
@@ -90,13 +90,30 @@ export function calculateDistance() {
   const PlayerPosY = store.getState().player.position[1]-40;
   const minesArray = store.getState().mines
   const mineDistance = minesArray.map((mine)=>{
-    const mineX = mine.oldPosX
-    const mineY = mine.oldPosy
+    const mineX = mine.oldPosX+15;
+    const mineY = mine.oldPosy+15;
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){Explosion(PlayerPosX,PlayerPosY)}})
-
+    mineDistance
+    .splice(-1, 1)
+    .map( (dis) => {if(dis<40){Explosion(PlayerPosX,PlayerPosY)}})
 }
+
+export function catchCoin() {
+  const PlayerPosX = store.getState().player.position[0]-30;
+  const PlayerPosY = store.getState().player.position[1]-40;
+  const coinPos = store.getState().flag
+  
+    const coinX = coinPos[0]+25;
+    const coinY = coinPos[1]+25;
+    console.log(Math.hypot(coinX-PlayerPosX, coinY -PlayerPosY) );
+    const coinPlayerDistance = Math.hypot(coinX-PlayerPosX, coinY -PlayerPosY) 
+if(coinPlayerDistance <= 30){
+  return alert('player win!!!')
+}
+}
+
+
+
 
 function Explosion(PlayerPosX,PlayerPosY){
   const explosionPosition = {
