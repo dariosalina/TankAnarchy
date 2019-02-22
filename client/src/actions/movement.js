@@ -8,13 +8,13 @@ export default function PlayerMovement(Player) {
     const oldPos = store.getState().player.position;
     switch (direction) {
       case "WEST":
-        return [oldPos[0] - 40, oldPos[1]];
+        return [oldPos[0] - 20, oldPos[1]];
       case "SOUTH":
-        return [oldPos[0], oldPos[1] + 40];
+        return [oldPos[0], oldPos[1] + 20];
       case "NORTH":
-        return [oldPos[0], oldPos[1] - 40];
+        return [oldPos[0], oldPos[1] - 20];
       case "EAST":
-        return [oldPos[0] + 40, oldPos[1]];
+        return [oldPos[0] + 20, oldPos[1]];
       default:
         return console.log("not working");
     }
@@ -86,14 +86,16 @@ export default function PlayerMovement(Player) {
 }
 
 export function calculateDistance() {
-  const PlayerPosX = store.getState().player.position[0];
-  const PlayerPosY = store.getState().player.position[1];
+  const PlayerPosX = store.getState().player.position[0]-30;
+  const PlayerPosY = store.getState().player.position[1]-40;
   const minesArray = store.getState().mines
   const mineDistance = minesArray.map((mine)=>{
     const mineX = mine.oldPosX
     const mineY = mine.oldPosy
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
+
     mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){Explosion(PlayerPosX,PlayerPosY)}})
+
 }
 
 function Explosion(PlayerPosX,PlayerPosY){

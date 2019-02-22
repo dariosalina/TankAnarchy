@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import bullet from "./bullet.png";
+import Bomb from "./Bomb.png";
 import {reveivePlayersMines} from '../actions/otherPlayerMovement'
 
 class Bullet extends Component {
@@ -18,16 +18,16 @@ class Bullet extends Component {
           <div
             style={{
               alignContent:'center',
-              border: 2,
+              // border: 2,
               // padding: 25,
-              borderStyle: 'solid',
+              // borderStyle: 'solid',
               position: "absolute",
               display: 'inline-block',
               top: mine.oldPosy,
               left: mine.oldPosX,
-              backgroundImage: `url(${bullet})`,
-              width: 10,
-              height: 10
+              backgroundImage: `url(${Bomb})`,
+              width: 30,
+              height:30 
         
             }}
           />

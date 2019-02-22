@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
-import Panther from './Panther.png'
+import RTank from './RTank.png'
+
+
 
 class Player extends Component {
 
@@ -12,12 +14,12 @@ class Player extends Component {
         style={{
           display: 'inline-block',
           position: "absolute",
-          top: this.props.position[1]-45,
+          top: this.props.position[1]-40,
           left: this.props.position[0]-30,
-          backgroundImage: `url(${Panther})`,
+          backgroundImage: `url(${RTank})`,
           transform: `rotate(${this.props.direction}deg)`,
           width: 60,
-          height: 90
+          height: 80 
         }}
       >
         
