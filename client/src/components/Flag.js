@@ -6,7 +6,7 @@ import Coin from "./FlagCoin.png";
 class Flag extends Component {
   render() {
     const flagPos = this.props;
-    console.log(this.props);
+    
     if (this.props === {}) return <div></div>;
     return (
       <div
