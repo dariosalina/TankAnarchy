@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Coin from "./FlagCoin.png";
-// import { reveivePlayersMines } from "../actions/otherPlayerMovement";
+
 
 class Flag extends Component {
   render() {
     const flagPos = this.props;
     
-    if (this.props === {}) return <div></div>;
+    if (!flagPos[0]) return <div></div>;
     return (
       <div
         style={{
