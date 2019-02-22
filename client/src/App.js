@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from './components/map'
 import './App.css';
-
+import {startGame} from './actions/movement'
 
 class App extends Component {
 
@@ -15,6 +15,7 @@ class App extends Component {
         style={
           {fontSize:30,
         }}>TankAnarchy</header>
+        <button onClick={()=> {startGame()}}>Start Game!!!</button>
        <Map />
       <footer>Made with love by Joey&Dario</footer>
       </div>

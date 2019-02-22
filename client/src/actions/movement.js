@@ -129,6 +129,21 @@ export function dispatchOtherPlayerMove(direction) {
   });
 }
 
-export function dispatchOtherPlayerMine(direction) {
-  
+
+function dispatchPositionFlag() {
+  socket.on('position-flag', data =>
+  store.dispatch({
+    type: "POSITION_FLAG",
+    payload: data
+  })
+  )
 }
+
+export function startGame() {
+  socket.emit('start-game', {
+    position: [0,0],
+    
+  })
+  dispatchPositionFlag()
+}
+
