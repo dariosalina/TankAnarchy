@@ -41,10 +41,16 @@ io.on("connection", function(socket) {
       ID: socket.id,
       payload: data
     }
-    console.log(updatedMine)
     io.emit("mines-to-client", updatedMine )
-
   });
+
+  socket.on("explosion", data => {
+    const updateExplosion = {
+      ID: socket.id,
+      payload: data
+    }
+    io.emit("explosion-to-client", updateExplosion )
+  })
 
   socket.on("disconnect", () => {
     console.log(`User  just disconnected`);

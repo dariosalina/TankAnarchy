@@ -61,7 +61,6 @@ export default function PlayerMovement(Player) {
     })
   }
 
-
   function handleKeyDown(e) {
     e.preventDefault();
     switch (e.keyCode) {
@@ -94,8 +93,7 @@ export function calculateDistance() {
     const mineX = mine.oldPosX
     const mineY = mine.oldPosy
     return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-    console.log(PlayerPosX,PlayerPosY )
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){return Explosion(PlayerPosX,PlayerPosY)}})
+    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){Explosion(PlayerPosX,PlayerPosY)}})
 }
 
 function Explosion(PlayerPosX,PlayerPosY){
@@ -103,12 +101,11 @@ function Explosion(PlayerPosX,PlayerPosY){
     y: PlayerPosX,
     x: PlayerPosY
   }
-  console.log(explosionPosition)
   store.dispatch({
     type: "EXPLOSION",
     payload: explosionPosition
   });
-  return alert(explosionPosition)
+  socket.emit("explosion", explosionPosition)
 }
 
 

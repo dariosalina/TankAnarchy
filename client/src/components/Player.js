@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PlayerMovement from "../actions/movement";
 import Panther from './Panther.png'
-import calculateDistance from '../actions/movement'
 
 class Player extends Component {
-
 
 
   render() {
