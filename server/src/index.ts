@@ -28,14 +28,13 @@ io.on("connection", function(socket) {
 
   function sendFlag(){
     const setPosition = {position: [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]}
-    console.log(setPosition)
     io.emit('position-flag', setPosition)
   }
 
   socket.on('start-game', data => {
     console.log(`User with ID`,socket.id, `is connected`)
     players[socket.id] = data.id
-    console.log(Object.keys(players).length)
+    // console.log(Object.keys(players).length)
     if (Object.keys(players).length === 2){
       setInterval(sendFlag, 5000)
     }})

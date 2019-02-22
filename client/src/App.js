@@ -21,7 +21,7 @@ class App extends Component {
         }}>TankAnarchy</header>
         <button onClick={()=> {startGame()}}>Start Game!!!</button>
        <Map /> 
-       }
+       
       <footer>Made with love by Joey&Dario</footer>
       </div>
     );

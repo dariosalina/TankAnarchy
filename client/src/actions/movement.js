@@ -37,7 +37,7 @@ export default function PlayerMovement(Player) {
   function checkBoundaries(oldPos, newPos) {
     return newPos[0] >= 5 &&
       newPos[0] <= 795 &&
-      (newPos[1] >= 5 && newPos[1] <= 595)
+      (newPos[1] >= 85 && newPos[1] <= 655)
       ? newPos
       : oldPos;
   }
@@ -90,13 +90,14 @@ export function calculateDistance() {
   const PlayerPosY = store.getState().player.position[1] - 40;
   const minesArray = store.getState().mines;
   const mineDistance = minesArray.map(mine => {
-    const mineX = mine.oldPosX + 15;
-    const mineY = mine.oldPosy + 15;
+    const mineX = mine.oldPosX ;
+    const mineY = mine.oldPosy;
     return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
   });
   mineDistance.splice(-1, 1).map(dis => {
     if (dis < 40) {
       Explosion(PlayerPosX, PlayerPosY);
+      alert('YOU LOSE!!!')
     }
   });
 }
