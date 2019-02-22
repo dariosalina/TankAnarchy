@@ -1,7 +1,6 @@
 import store from "../store";
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000/');
-
+import openSocket from "socket.io-client";
+const socket = openSocket("http://localhost:5000/");
 
 export default function PlayerMovement(Player) {
   function getNewPosition(direction) {
@@ -35,19 +34,20 @@ export default function PlayerMovement(Player) {
     }
   }
 
-  function checkBoundaries(oldPos, newPos){
-    return (newPos[0] >= 5 && newPos[0] <= 795) &&
-           (newPos[1] >=5 && newPos[1] <= 595)
-            ? newPos : oldPos
+  function checkBoundaries(oldPos, newPos) {
+    return newPos[0] >= 5 &&
+      newPos[0] <= 795 &&
+      (newPos[1] >= 5 && newPos[1] <= 595)
+      ? newPos
+      : oldPos;
   }
-  calculateDistance()
+  calculateDistance();
   function dispatchMove(direction) {
-    const oldPos = store.getState().player.position
+    const oldPos = store.getState().player.position;
 
     const playerMovement = {
       position: checkBoundaries(oldPos, getNewPosition(direction)),
       direction: getNewDirection(direction)
-    
     };
     store.dispatch({
       type: "MOVE_PLAYER",
@@ -57,21 +57,21 @@ export default function PlayerMovement(Player) {
     store.dispatch({
       type: "ADD_PLAYERID",
       payload: String(socket.id)
-
-    })
+    });
   }
 
   function handleKeyDown(e) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-        return dispatchMove("WEST") & calculateDistance() & calculateDistanceToFlag();
+
+        return dispatchMove("WEST") & calculateDistance() & catchCoin();
       case 38:
-        return dispatchMove("NORTH") & calculateDistance()& calculateDistanceToFlag();
+        return dispatchMove("NORTH") & calculateDistance() & catchCoin();
       case 39:
-        return dispatchMove("EAST") & calculateDistance() & calculateDistanceToFlag();;
+        return dispatchMove("EAST") & calculateDistance() & catchCoin();
       case 40:
-        return dispatchMove("SOUTH") & calculateDistance() & calculateDistanceToFlag();
+        return dispatchMove("SOUTH") & calculateDistance() & catchCoin();
       case 32:
         return dropBullet();
       default:
@@ -86,32 +86,39 @@ export default function PlayerMovement(Player) {
 }
 
 export function calculateDistance() {
-  const PlayerPosX = store.getState().player.position[0]-30;
-  const PlayerPosY = store.getState().player.position[1]-40;
-  const minesArray = store.getState().mines
-  const mineDistance = minesArray.map((mine)=>{
-    const mineX = mine.oldPosX
-    const mineY = mine.oldPosy
-    return Math.hypot(mineX-PlayerPosX, mineY -PlayerPosY)} )
-
-    mineDistance.splice(-1, 1).map( (dis) => {if(dis<40){Explosion(PlayerPosX,PlayerPosY)}})
-
+  const PlayerPosX = store.getState().player.position[0] - 30;
+  const PlayerPosY = store.getState().player.position[1] - 40;
+  const minesArray = store.getState().mines;
+  const mineDistance = minesArray.map(mine => {
+    const mineX = mine.oldPosX + 15;
+    const mineY = mine.oldPosy + 15;
+    return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
+  });
+  mineDistance.splice(-1, 1).map(dis => {
+    if (dis < 40) {
+      Explosion(PlayerPosX, PlayerPosY);
+    }
+  });
 }
 
-export function calculateDistanceToFlag() {
-  const PlayerPos = store.getState().player.position;
-  const flagPos = store.getState().flag
-  console.log(flagPos, PlayerPos)
+export function catchCoin() {
+  const PlayerPosX = store.getState().player.position[0] - 30;
+  const PlayerPosY = store.getState().player.position[1] - 40;
+  const coinPos = store.getState().flag;
 
-
+  const coinX = coinPos[0] + 25;
+  const coinY = coinPos[1] + 25;
+  const coinPlayerDistance = Math.hypot(coinX - PlayerPosX, coinY - PlayerPosY);
+  if (coinPlayerDistance <= 30) {
+    return alert("player win!!!");
+  }
 }
 
-function Explosion(PlayerPosX,PlayerPosY){
+function Explosion(PlayerPosX, PlayerPosY) {
   const explosionPosition = {
     y: PlayerPosX,
     x: PlayerPosY
-  }
-
+  };
   store.dispatch({
     type: "EXPLOSION",
     payload: explosionPosition,
@@ -124,9 +131,7 @@ function ScoreCounter() {
   store.dispatch({
     type: "UPDATESCORE",
   })
-}
-
-
+ }
 
 export function dropBullet() {
   const oldPosX = store.getState().player.position[0];
@@ -135,7 +140,7 @@ export function dropBullet() {
     type: "DROP_MINE",
     payload: { oldPosX, oldPosy }
   });
-  socket.emit("drop-mine", (socket.id, { oldPosX, oldPosy }))
+  socket.emit("drop-mine", (socket.id, { oldPosX, oldPosy }));
 }
 
 export function dispatchOtherPlayerMove(direction) {
@@ -145,22 +150,22 @@ export function dispatchOtherPlayerMove(direction) {
   });
 }
 
-
 function dispatchPositionFlag() {
-  socket.on('position-flag', data =>
-  store.dispatch({
-    type: "POSITION_FLAG",
-    payload: data
-  })
-  )
+  socket.on("position-flag", data =>
+    store.dispatch({
+      type: "POSITION_FLAG",
+      payload: data
+    })
+  );
 }
 
 export function startGame() {
+
   socket.emit('start-game', {
     id: socket.id,
     position: [0,0],
     
   })
   dispatchPositionFlag()
-}
 
+}

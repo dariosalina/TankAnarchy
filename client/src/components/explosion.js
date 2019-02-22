@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {reveivePlayersExplosions} from '../actions/otherPlayerMovement'
+import explosion from './explosion.gif_c200'
 
 class Explosion extends Component {
 
@@ -20,7 +21,7 @@ class Explosion extends Component {
                         position: "absolute",
                         width: 200,
                         height: 200,
-                        borderStyle: "solid"
+                        backgroundImage: `url(${explosion})`,
                     }}
                 >
                 </div>
