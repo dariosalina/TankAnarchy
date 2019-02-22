@@ -4,8 +4,8 @@ import PlayerMovement from "../actions/movement";
 import RTank from './RTank.png'
 
 
-class Player extends Component {
 
+class Player extends Component {
 
 
   render() {

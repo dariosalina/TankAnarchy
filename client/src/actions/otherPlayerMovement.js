@@ -36,4 +36,18 @@ function dispatchOtherPlayersMines(position){
   })
 }
 
+export function reveivePlayersExplosions() {
+  socket.on ("explosion-to-client", data => {
+    const playersID = store.getState().playersID
+    if (data.ID !== playersID)
+    dispatchOtherPlayersExplosion(data.payload)
+  }) 
+}
+
+function dispatchOtherPlayersExplosion(position){
+  store.dispatch({
+      type: "EXPLOSION_OTHERPLAYER",
+      payload: position
+  })
+}
 
