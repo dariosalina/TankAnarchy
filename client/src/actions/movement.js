@@ -65,13 +65,13 @@ export default function PlayerMovement(Player) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-        return dispatchMove("WEST") & calculateDistance();
+        return dispatchMove("WEST") & calculateDistance() & calculateDistanceToFlag();
       case 38:
-        return dispatchMove("NORTH") & calculateDistance();
+        return dispatchMove("NORTH") & calculateDistance()& calculateDistanceToFlag();
       case 39:
-        return dispatchMove("EAST") & calculateDistance();
+        return dispatchMove("EAST") & calculateDistance() & calculateDistanceToFlag();;
       case 40:
-        return dispatchMove("SOUTH") & calculateDistance();
+        return dispatchMove("SOUTH") & calculateDistance() & calculateDistanceToFlag();
       case 32:
         return dropBullet();
       default:
@@ -98,16 +98,32 @@ export function calculateDistance() {
 
 }
 
+export function calculateDistanceToFlag() {
+  const PlayerPos = store.getState().player.position;
+  const flagPos = store.getState().flag
+  console.log(flagPos, PlayerPos)
+
+
+}
+
 function Explosion(PlayerPosX,PlayerPosY){
   const explosionPosition = {
     y: PlayerPosX,
     x: PlayerPosY
   }
+
   store.dispatch({
     type: "EXPLOSION",
-    payload: explosionPosition
+    payload: explosionPosition,
   });
   socket.emit("explosion", explosionPosition)
+  ScoreCounter()
+}
+
+function ScoreCounter() {
+  store.dispatch({
+    type: "UPDATESCORE",
+  })
 }
 
 
@@ -141,6 +157,7 @@ function dispatchPositionFlag() {
 
 export function startGame() {
   socket.emit('start-game', {
+    id: socket.id,
     position: [0,0],
     
   })

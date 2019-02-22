@@ -23,8 +23,8 @@ class Bullet extends Component {
               // borderStyle: 'solid',
               position: "absolute",
               display: 'inline-block',
-              top: mine.oldPosy,
-              left: mine.oldPosX,
+              top: mine.oldPosy-15,
+              left: mine.oldPosX-15,
               backgroundImage: `url(${Bomb})`,
               width: 30,
               height:30 

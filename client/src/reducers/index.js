@@ -5,6 +5,7 @@ import createPlayersID from './addPlayerID'
 import mineReducer from './mines'
 import explosionReducer from './explosion'
 import flagReducer from './flag'
+import scoreReducer from './score'
 
 const reducer = combineReducers ({
     playersID: createPlayersID,
@@ -12,7 +13,8 @@ const reducer = combineReducers ({
     otherPlayer: otherPlayerReducer,
     mines: mineReducer,
     explosion: explosionReducer,
-    flag: flagReducer
+    flag: flagReducer,
+    score: scoreReducer
 })
 
 export default reducer
