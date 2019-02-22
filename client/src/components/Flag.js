@@ -17,7 +17,7 @@ class Flag extends Component {
           backgroundImage: `url(${Coin})`,
           width: 50,
           height: 50,
-          border: 'solid'
+          
         }}
       />
     );
