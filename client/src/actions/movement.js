@@ -64,6 +64,7 @@ export default function PlayerMovement(Player) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
+
         return dispatchMove("WEST") & calculateDistance() & catchCoin();
       case 38:
         return dispatchMove("NORTH") & calculateDistance() & catchCoin();
@@ -120,10 +121,17 @@ function Explosion(PlayerPosX, PlayerPosY) {
   };
   store.dispatch({
     type: "EXPLOSION",
-    payload: explosionPosition
+    payload: explosionPosition,
   });
-  socket.emit("explosion", explosionPosition);
+  socket.emit("explosion", explosionPosition)
+  ScoreCounter()
 }
+
+function ScoreCounter() {
+  store.dispatch({
+    type: "UPDATESCORE",
+  })
+ }
 
 export function dropBullet() {
   const oldPosX = store.getState().player.position[0];
@@ -152,8 +160,12 @@ function dispatchPositionFlag() {
 }
 
 export function startGame() {
-  socket.emit("start-game", {
-    position: [0, 0]
-  });
-  dispatchPositionFlag();
+
+  socket.emit('start-game', {
+    id: socket.id,
+    position: [0,0],
+    
+  })
+  dispatchPositionFlag()
+
 }

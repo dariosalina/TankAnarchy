@@ -5,6 +5,10 @@ import {startGame} from './actions/movement'
 
 class App extends Component {
 
+  state = {
+    showmap: "hide"
+  }
+
   render(){
   return (
       <div className="App"
@@ -16,7 +20,8 @@ class App extends Component {
           {fontSize:30,
         }}>TankAnarchy</header>
         <button onClick={()=> {startGame()}}>Start Game!!!</button>
-       <Map />
+       <Map /> 
+       }
       <footer>Made with love by Joey&Dario</footer>
       </div>
     );

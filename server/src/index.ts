@@ -16,22 +16,29 @@ useKoaServer(app, {
 });
 
 
-// let players = {
+let players = {}
 
-// };
+
+
+
 
 
 // Server is working, controller /test is working.
 io.on("connection", function(socket) {
-  console.log(`User with ID`,socket.id, `is connected`)
-  
-  socket.on('start-game', data => {
-    console.log(data, 'data')
-  data = [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]
-  console.log(data, 'random data')
 
-  io.emit('position-flag', data)
-})
+  function sendFlag(){
+    const setPosition = {position: [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]}
+    console.log(setPosition)
+    io.emit('position-flag', setPosition)
+  }
+
+  socket.on('start-game', data => {
+    console.log(`User with ID`,socket.id, `is connected`)
+    players[socket.id] = data.id
+    console.log(Object.keys(players).length)
+    if (Object.keys(players).length === 2){
+      setInterval(sendFlag, 5000)
+    }})
 
   socket.on("movement", data => {
     const newData = {
@@ -58,9 +65,10 @@ io.on("connection", function(socket) {
   })
 
   socket.on("disconnect", () => {
+    delete players[socket.id]
     console.log(`User  just disconnected`);
   });
 })
 
-server.listen(port, () => console.log(`Listening on port ${port}`))
 
+server.listen(port, () => console.log(`Listening on port ${port}`))
