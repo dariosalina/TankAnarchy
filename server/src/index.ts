@@ -27,7 +27,7 @@ io.on("connection", function(socket) {
   
   socket.on('start-game', data => {
     console.log(data, 'data')
-  data = {position: [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]}
+  data = [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]
   console.log(data, 'random data')
 
   io.emit('position-flag', data)

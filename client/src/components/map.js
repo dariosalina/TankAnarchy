@@ -4,6 +4,7 @@ import OtherPlayer from "./OtherPlayer";
 import sand_template from './sand_template.jpg'
 import Bullet from "./bullet";
 import Explosion from './explosion'
+import Flag from "./Flag";
 
 function Map() {
   return (
@@ -21,6 +22,7 @@ function Map() {
       <OtherPlayer />
       <Bullet/>
       <Explosion/>
+      <Flag/>
     </div>
   );
 }
