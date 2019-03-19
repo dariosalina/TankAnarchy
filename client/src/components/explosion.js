@@ -16,9 +16,10 @@ class Explosion extends Component {
             <div>
                 <div
                     style={{
-                        top: this.props.x-100,
-                        left: this.props.y-100,
+                        top: this.props.x-80,
+                        left: this.props.y-80,
                         position: "absolute",
+                        border: 'solid',
                         width: 200,
                         height: 200,
                         backgroundImage: `url(${explosion})`,

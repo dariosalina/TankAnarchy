@@ -41,7 +41,7 @@ export default function PlayerMovement(Player) {
       ? newPos
       : oldPos;
   }
-  calculateDistance();
+  distanceToBombChecker();
   function dispatchMove(direction) {
     const oldPos = store.getState().player.position;
 
@@ -65,13 +65,13 @@ export default function PlayerMovement(Player) {
     switch (e.keyCode) {
       case 37:
 
-        return dispatchMove("WEST") & calculateDistanceV2() & catchCoin();
+        return dispatchMove("WEST") & distanceToBombChecker() & catchCoin();
       case 38:
-        return dispatchMove("NORTH") & calculateDistanceV2() & catchCoin();
+        return dispatchMove("NORTH") & distanceToBombChecker() & catchCoin();
       case 39:
-        return dispatchMove("EAST") & calculateDistanceV2() & catchCoin();
+        return dispatchMove("EAST") & distanceToBombChecker() & catchCoin();
       case 40:
-        return dispatchMove("SOUTH") & calculateDistanceV2() & catchCoin();
+        return dispatchMove("SOUTH") & distanceToBombChecker() & catchCoin();
       case 32:
         return dropBullet();
       default:
@@ -85,32 +85,30 @@ export default function PlayerMovement(Player) {
   return Player;
 }
 
-export function calculateDistance() {
-  const PlayerPosX = store.getState().player.position[0] - 40;
-  const PlayerPosY = store.getState().player.position[1] - 40;
+// export function calculateDistance() {
+//   const PlayerPosX = store.getState().player.position[0] - 40;
+//   const PlayerPosY = store.getState().player.position[1] - 40;
   
-  const minesArray = store.getState().mines;
-  const mineDistance = minesArray.map(mine => {
-    const mineX = mine.oldPosX 
-    const mineY = mine.oldPosy;
-    console.log(mineX,mineY )
-    return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
-  });
-  mineDistance.splice(-1, 1).map(dis => {
-    if (dis < 0) {
-      console.log(dis)
-      Explosion(PlayerPosX, PlayerPosY);
-    }
-  });
-}
+//   const minesArray = store.getState().mines;
+//   const mineDistance = minesArray.map(mine => {
+//     const mineX = mine.oldPosX 
+//     const mineY = mine.oldPosy;
+//     console.log(mineX,mineY )
+//     return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
+//   });
+//   mineDistance.splice(-1, 1).map(dis => {
+//     if (dis < 0) {
+//       console.log(dis)
+//       Explosion(PlayerPosX, PlayerPosY);
+//     }
+//   });
+// }
 
-export function calculateDistanceV2() {
+export function distanceToBombChecker() {
   const PlayerPosX = store.getState().player.position[0];
   const PlayerPosY = store.getState().player.position[1];
   
   store.getState().mines.map(mine => {
-    console.log('check pos X', mine.oldPosX, 'and pos Y' , mine.oldPosy)
-    console.log('check player pos X', PlayerPosX , 'and player pos Y' , PlayerPosY)
     if (mine.oldPosX === PlayerPosX && mine.oldPosy === PlayerPosY) {
       Explosion(PlayerPosX, PlayerPosY)
       return null
