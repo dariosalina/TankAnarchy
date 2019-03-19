@@ -18,7 +18,7 @@ class Explosion extends Component {
                     style={{
                         top: this.props.x-100,
                         left: this.props.y-100,
-                        position: "absolute",
+                        position: "relative",
                         width: 200,
                         height: 200,
                         backgroundImage: `url(${explosion})`,

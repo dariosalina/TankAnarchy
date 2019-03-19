@@ -12,11 +12,12 @@ class Flag extends Component {
       <div
         style={{
           position: "relative",
+          border: 'solid',
           top: flagPos[1],
           left: flagPos[0],
           backgroundImage: `url(${Coin})`,
-          width: 50,
-          height: 50,
+          width: 40,
+          height: 40,
           
         }}
       />

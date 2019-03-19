@@ -7,13 +7,13 @@ export default function PlayerMovement(Player) {
     const oldPos = store.getState().player.position;
     switch (direction) {
       case "WEST":
-        return [oldPos[0] - 20, oldPos[1]];
+        return [oldPos[0] - 40, oldPos[1]];
       case "SOUTH":
-        return [oldPos[0], oldPos[1] + 20];
+        return [oldPos[0], oldPos[1] + 40];
       case "NORTH":
-        return [oldPos[0], oldPos[1] - 20];
+        return [oldPos[0], oldPos[1] - 40];
       case "EAST":
-        return [oldPos[0] + 20, oldPos[1]];
+        return [oldPos[0] + 40, oldPos[1]];
       default:
         return console.log("not working");
     }
@@ -35,9 +35,9 @@ export default function PlayerMovement(Player) {
   }
 
   function checkBoundaries(oldPos, newPos) {
-    return newPos[0] >= 5 &&
-      newPos[0] <= 795 &&
-      (newPos[1] >= 5 && newPos[1] <= 595)
+    return newPos[0] >= 0 &&
+      newPos[0] <= 360 &&
+      (newPos[1] >= 0 && newPos[1] <= 360)
       ? newPos
       : oldPos;
   }

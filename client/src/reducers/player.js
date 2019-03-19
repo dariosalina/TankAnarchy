@@ -3,8 +3,6 @@ const inititalState = {
     direction : ''
 }
 
-
-
 const playerReducer = (state = inititalState, action) => {
     switch(action.type) {
         case 'MOVE_PLAYER':

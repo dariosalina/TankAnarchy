@@ -12,17 +12,16 @@ class Player extends Component {
     return (
       <div
         style={{
-          display: 'inline-block',
-          position: "absolute",
-          top: this.props.position[1]-40,
-          left: this.props.position[0]-30,
+          border: 'solid',
+          position: "relative",
+          top: this.props.position[1],
+          left: this.props.position[0],
           backgroundImage: `url(${RTank})`,
           transform: `rotate(${this.props.direction}deg)`,
-          width: 60,
-          height: 80 
+          width: 40,
+          height: 40 
         }}
       >
-        
       </div>
     );
   }

@@ -14,15 +14,18 @@ class App extends Component {
       <div className="App"
       style={
         {backgroundColor :'#d1ffa3',
+        textAlign: 'center'
       }}>
         <header
-        style={
-          {fontSize:30,
-        }}>TankAnarchy</header>
+        style={{
+          fontSize:30,
+          textAlign: 'center'
+        }}>TankAnarchy
+        <br />
         <button onClick={()=> {startGame()}}>Start Game!!!</button>
-       <Map /> 
-       }
-      <footer>Made with love by Joey&Dario</footer>
+        </header>
+       <Map />
+      <footer>Made with love by Joey & Dario</footer>
       </div>
     );
   }}

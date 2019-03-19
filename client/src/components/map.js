@@ -10,10 +10,11 @@ function Map() {
   return (
     <div
       style={{
-        margin: '2px',
-        paddingBottom: '2px',
-        height: "600px",
-        width: "800px",
+        display: 'inline-block',
+        // margin: '2px',
+        // paddingBottom: '2px',
+        height: "400px",
+        width: "400px",
         border: "4px solid black",
         backgroundImage: `url(${sand_template})`
       }}

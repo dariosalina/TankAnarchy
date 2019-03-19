@@ -20,14 +20,14 @@ class Bullet extends Component {
               alignContent:'center',
               // border: 2,
               // padding: 25,
-              // borderStyle: 'solid',
-              position: "absolute",
-              display: 'inline-block',
-              top: mine.oldPosy-15,
-              left: mine.oldPosX-15,
+              borderStyle: 'solid',
+              position: "relative",
+              // display: 'inline-block',
+              top: mine.oldPosy,
+              left: mine.oldPosX,
               backgroundImage: `url(${Bomb})`,
-              width: 30,
-              height:30 
+              width: 40,
+              height:40 
         
             }}
           />

@@ -18,14 +18,15 @@ class OtherPlayer extends Component {
              
       <div
         style={{
-          position: "absolute",
-          top: this.props.position[1]-40,
-          left: this.props.position[0]-30,
+          border: 'solid',
+          position: "relative",
+          top: this.props.position[1],
+          left: this.props.position[0],
           transform: `rotate(${this.props.direction}deg)`,
           backgroundImage: `url(${BTank})`,
           // transform: `rotate(${this.props.direction}deg)`,
-          width: 60,
-          height: 80
+          width: 40,
+          height: 40
         }}
       >
         {/* Player2 */}
