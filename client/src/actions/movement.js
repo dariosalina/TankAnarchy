@@ -41,7 +41,7 @@ export default function PlayerMovement(Player) {
       ? newPos
       : oldPos;
   }
-  distanceToBombChecker();
+
   function dispatchMove(direction) {
     const oldPos = store.getState().player.position;
 
@@ -64,14 +64,13 @@ export default function PlayerMovement(Player) {
     e.preventDefault();
     switch (e.keyCode) {
       case 37:
-
-        return dispatchMove("WEST") & distanceToBombChecker() & catchCoin();
+        return dispatchMove("WEST") & distanceToBombChecker() & distanceToFlagChecker();
       case 38:
-        return dispatchMove("NORTH") & distanceToBombChecker() & catchCoin();
+        return dispatchMove("NORTH") & distanceToBombChecker() & distanceToFlagChecker();
       case 39:
-        return dispatchMove("EAST") & distanceToBombChecker() & catchCoin();
+        return dispatchMove("EAST") & distanceToBombChecker() & distanceToFlagChecker();
       case 40:
-        return dispatchMove("SOUTH") & distanceToBombChecker() & catchCoin();
+        return dispatchMove("SOUTH") & distanceToBombChecker() & distanceToFlagChecker();
       case 32:
         return dropBullet();
       default:
@@ -116,18 +115,29 @@ export function distanceToBombChecker() {
   })
 }
 
-export function catchCoin() {
-  const PlayerPosX = store.getState().player.position[0] - 30;
-  const PlayerPosY = store.getState().player.position[1] - 40;
-  const coinPos = store.getState().flag;
-
-  const coinX = coinPos[0] + 25;
-  const coinY = coinPos[1] + 25;
-  const coinPlayerDistance = Math.hypot(coinX - PlayerPosX, coinY - PlayerPosY);
-  if (coinPlayerDistance <= 30) {
-    return alert("player win!!!");
+export function distanceToFlagChecker() {
+  const PlayerPosX = store.getState().player.position[0];
+  const PlayerPosY = store.getState().player.position[1];
+  const coinPosX = store.getState().flag.position[0]
+  const coinPosY = store.getState().flag.position[1]
+  
+  if(coinPosX === PlayerPosX && coinPosY === PlayerPosY ) {
+    return alert("You win!!!");
   }
 }
+
+// export function catchCoin() {
+//   const PlayerPosX = store.getState().player.position[0] - 30;
+//   const PlayerPosY = store.getState().player.position[1] - 40;
+//   const coinPos = store.getState().flag;
+
+//   const coinX = coinPos[0] + 25;
+//   const coinY = coinPos[1] + 25;
+//   const coinPlayerDistance = Math.hypot(coinX - PlayerPosX, coinY - PlayerPosY);
+//   if (coinPlayerDistance <= 30) {
+//     return alert("player win!!!");
+//   } else return null
+// }
 
 function Explosion(PlayerPosX, PlayerPosY) {
   const explosionPosition = {

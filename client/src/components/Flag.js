@@ -5,16 +5,16 @@ import Coin from "./FlagCoin.png";
 
 class Flag extends Component {
   render() {
-    const flagPos = this.props;
-    
-    if (this.props === {}) return <div></div>;
+    const flagPos = this.props.position;
+
+    if (this.props.position === undefined) return <div></div>;
     return (
       <div
         style={{
           position: "absolute",
           border: 'solid',
-          top: flagPos[1],
-          left: flagPos[0],
+          top: flagPos[0],
+          left: flagPos[1],
           backgroundImage: `url(${Coin})`,
           width: 40,
           height: 40,
