@@ -1,11 +1,12 @@
 # 💣💣TankAnarchy💣💣 
 
+
 ## What this project is about
-Group project. During this project we have learned to build a realtime multiplayer game in React.  
-
-**[Goals for this project](#goals-for-this-project)**
-
+Group project. During this project we have learned to build a realtime multiplayer game in React. 
 ## Table of contents:
+
+## Feature/Catch as many coins.
+<img src="https://github.com/dariosalina/TankAnarchy/issues/16#issue-422755864"/>
 
 - **[Technologies used](#technologies-used)**
 - **[Goals for this project](#goals-for-this-project)**
