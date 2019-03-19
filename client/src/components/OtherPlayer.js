@@ -19,7 +19,7 @@ class OtherPlayer extends Component {
       <div
         style={{
           border: 'solid',
-          position: "relative",
+          position: "absolute",
           top: this.props.position[1],
           left: this.props.position[0],
           transform: `rotate(${this.props.direction}deg)`,

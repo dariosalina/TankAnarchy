@@ -13,7 +13,8 @@ class Player extends Component {
       <div
         style={{
           border: 'solid',
-          position: "relative",
+          position: "absolute",
+          // display: 'inline-block',
           top: this.props.position[1],
           left: this.props.position[0],
           backgroundImage: `url(${RTank})`,

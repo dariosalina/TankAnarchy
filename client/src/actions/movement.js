@@ -65,13 +65,13 @@ export default function PlayerMovement(Player) {
     switch (e.keyCode) {
       case 37:
 
-        return dispatchMove("WEST") & calculateDistance() & catchCoin();
+        return dispatchMove("WEST") & calculateDistanceV2() & catchCoin();
       case 38:
-        return dispatchMove("NORTH") & calculateDistance() & catchCoin();
+        return dispatchMove("NORTH") & calculateDistanceV2() & catchCoin();
       case 39:
-        return dispatchMove("EAST") & calculateDistance() & catchCoin();
+        return dispatchMove("EAST") & calculateDistanceV2() & catchCoin();
       case 40:
-        return dispatchMove("SOUTH") & calculateDistance() & catchCoin();
+        return dispatchMove("SOUTH") & calculateDistanceV2() & catchCoin();
       case 32:
         return dropBullet();
       default:
@@ -86,19 +86,36 @@ export default function PlayerMovement(Player) {
 }
 
 export function calculateDistance() {
-  const PlayerPosX = store.getState().player.position[0] - 30;
+  const PlayerPosX = store.getState().player.position[0] - 40;
   const PlayerPosY = store.getState().player.position[1] - 40;
+  
   const minesArray = store.getState().mines;
   const mineDistance = minesArray.map(mine => {
-    const mineX = mine.oldPosX + 15;
-    const mineY = mine.oldPosy + 15;
+    const mineX = mine.oldPosX 
+    const mineY = mine.oldPosy;
+    console.log(mineX,mineY )
     return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
   });
   mineDistance.splice(-1, 1).map(dis => {
-    if (dis < 40) {
+    if (dis < 0) {
+      console.log(dis)
       Explosion(PlayerPosX, PlayerPosY);
     }
   });
+}
+
+export function calculateDistanceV2() {
+  const PlayerPosX = store.getState().player.position[0];
+  const PlayerPosY = store.getState().player.position[1];
+  
+  store.getState().mines.map(mine => {
+    console.log('check pos X', mine.oldPosX, 'and pos Y' , mine.oldPosy)
+    console.log('check player pos X', PlayerPosX , 'and player pos Y' , PlayerPosY)
+    if (mine.oldPosX === PlayerPosX && mine.oldPosy === PlayerPosY) {
+      Explosion(PlayerPosX, PlayerPosY)
+      return null
+    }
+  })
 }
 
 export function catchCoin() {

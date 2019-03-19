@@ -11,7 +11,7 @@ class Flag extends Component {
     return (
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           border: 'solid',
           top: flagPos[1],
           left: flagPos[0],

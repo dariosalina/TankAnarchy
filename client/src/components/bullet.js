@@ -21,7 +21,7 @@ class Bullet extends Component {
               // border: 2,
               // padding: 25,
               borderStyle: 'solid',
-              position: "relative",
+              position: "absolute",
               // display: 'inline-block',
               top: mine.oldPosy,
               left: mine.oldPosX,

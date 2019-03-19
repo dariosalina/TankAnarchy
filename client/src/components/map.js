@@ -11,6 +11,7 @@ function Map() {
     <div
       style={{
         display: 'inline-block',
+        position: 'relative',
         // margin: '2px',
         // paddingBottom: '2px',
         height: "400px",
