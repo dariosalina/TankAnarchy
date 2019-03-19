@@ -26,7 +26,7 @@ io.on("connection", function(socket) {
 //     var range = 100;
 // var number = Math.floor( Math.random() * range / 2 ) * 2;
 
-    const setPosition = {position: [Math.floor(Math.random()*10)*40 + 40, Math.floor(Math.random()*10)*40 + 40]}
+    const setPosition = {position: [Math.floor(Math.random()*9)*40 + 40, Math.floor(Math.random()*9)*40 + 40]}
     console.log(setPosition)
     io.emit('position-flag', setPosition)
   }
