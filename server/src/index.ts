@@ -19,15 +19,14 @@ useKoaServer(app, {
 let players = {}
 
 
-
-
-
-
 // Server is working, controller /test is working.
 io.on("connection", function(socket) {
 
   function sendFlag(){
-    const setPosition = {position: [Math.floor((Math.random() * 700) + 50), Math.floor((Math.random() * 500) + 50)]}
+//     var range = 100;
+// var number = Math.floor( Math.random() * range / 2 ) * 2;
+
+    const setPosition = {position: [Math.floor(Math.random()*10)*40 + 40, Math.floor(Math.random()*10)*40 + 40]}
     console.log(setPosition)
     io.emit('position-flag', setPosition)
   }
