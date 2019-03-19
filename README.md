@@ -1,7 +1,7 @@
 # 💣💣TankAnarchy💣💣 
 
 ## What this project is about
-Group project. During this project we have learned to build a realtime Multiplayer game in React.  
+Group project. During this project we have learned to build a realtime multiplayer game in React.  
 
 **[Goals for this project](#goals-for-this-project)**
 
@@ -29,7 +29,7 @@ Group project. During this project we have learned to build a realtime Multiplay
 
 This project was scaffolded using the create-react-app cli. 
 
-**[The standard create-react-app docs can be found in here](./create-react-app-docs.md)**
+**[The standard create-react-app docs can be found in here](https://github.com/dariosalina/TankAnarchy/blob/master/client/README.md)**
 
 
 
