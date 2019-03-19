@@ -7,7 +7,7 @@ Group project. During this project we have learned to build a realtime multiplay
 ## Features
 - 2 player game
 - Be the first to catch the coin and win. (coin has a different position every 5 sec)
-- Players are able to drop bombs. It's game over when one of the player touch the bomb.
+- Players are able to drop bombs. It's game over when one of the player touches the bomb.
 <img width="815" alt="Schermafbeelding 2019-03-19 om 15 06 48" src="https://user-images.githubusercontent.com/45559498/54613044-54b26400-4a5a-11e9-873c-e95a1c055e97.png">
 
 ## Feature/Catch as many coins.
