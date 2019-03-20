@@ -48,6 +48,11 @@ io.on("connection", function(socket) {
     }
     io.emit("move-completed", newData)
 
+  socket.on("new-flag-request", data => {
+    console.log(data)
+    sendFlag()
+  })
+
   });
   socket.on("drop-mine", data => {
     const updatedMine = {
@@ -69,6 +74,9 @@ io.on("connection", function(socket) {
     delete players[socket.id]
     console.log(`User  just disconnected`);
   });
+
+
+
 })
 
 
