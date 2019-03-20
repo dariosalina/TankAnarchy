@@ -23,20 +23,22 @@ let players = {}
 io.on("connection", function(socket) {
 
   function sendFlag(){
-//     var range = 100;
-// var number = Math.floor( Math.random() * range / 2 ) * 2;
-
     const setPosition = {position: [Math.floor(Math.random()*9)*40 + 40, Math.floor(Math.random()*9)*40 + 40]}
-    console.log(setPosition)
     io.emit('position-flag', setPosition)
   }
 
   socket.on('start-game', data => {
     console.log(`User with ID`,socket.id, `is connected`)
     players[socket.id] = data.id
+    const newData = {
+      ID:  socket.id,
+      payload: {position: [Math.floor(Math.random()*9)*40 + 40, Math.floor(Math.random()*9)*40 + 40]}
+    }
+    console.log("new data", newData)
     console.log(Object.keys(players).length)
+    io.emit('player-added', newData, )
     if (Object.keys(players).length === 2){
-      setInterval(sendFlag, 5000)
+      sendFlag()
     }})
 
   socket.on("movement", data => {
