@@ -6,7 +6,20 @@ import {startGame} from './actions/movement'
 class App extends Component {
 
   state = {
-    showmap: "hide"
+    showmap: "hide",
+    display: false
+  }
+
+  startGame() {
+    this.setState({display: true})
+    console.log(this.state.display)
+    startGame()
+  }
+
+  displayMap() {
+    if(this.state.display === true) {
+      return <Map />
+    }
   }
 
   render(){
@@ -22,11 +35,13 @@ class App extends Component {
           textAlign: 'center'
         }}>TankAnarchy
         <br />
-        <button onClick={()=> {startGame()}}>Start Game!!!</button>
+        <button onClick={()=> {this.startGame()}}>Start Game!!!</button>
         </header>
-       <Map />
+        {this.displayMap()}
+       {/* <Map /> */}
       <footer>Made with love by Joey & Dario</footer>
       </div>
+      
     );
   }}
 
