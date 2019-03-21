@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import Map from './components/map'
 import './App.css';
 import {startGame} from './actions/movement'
+import {receivePlayerData} from './actions/otherPlayerMovement'
+import Score from './components/Score'
 
 class App extends Component {
 
   state = {
     showmap: "hide",
     display: false
+  }
+
+  componentWillMount(){
+    receivePlayerData()
   }
 
   startGame() {
@@ -36,6 +42,7 @@ class App extends Component {
         <br />
         <button onClick={()=> {this.startGame()}}>Start Game!!!</button>
         </header>
+        <Score />
         {this.displayMap()}
        {/* <Map /> */}
       <footer>Made with love by Joey & Dario</footer>

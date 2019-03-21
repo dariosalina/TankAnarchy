@@ -3,6 +3,7 @@ import openSocket from "socket.io-client";
 const socket = openSocket("http://localhost:5000/");
 
 export default function PlayerMovement(Player) {
+  
   function getNewPosition(direction) {
     const oldPos = store.getState().player.position;
     switch (direction) {
@@ -54,10 +55,6 @@ export default function PlayerMovement(Player) {
       payload: playerMovement
     });
     socket.emit("movement", (socket.id, { playerMovement }));
-    // store.dispatch({
-    //   type: "ADD_PLAYERID",
-    //   payload: String(socket.id)
-    // });
   }
 
   function handleKeyDown(e) {
@@ -84,25 +81,6 @@ export default function PlayerMovement(Player) {
   return Player;
 }
 
-// export function calculateDistance() {
-//   const PlayerPosX = store.getState().player.position[0] - 40;
-//   const PlayerPosY = store.getState().player.position[1] - 40;
-  
-//   const minesArray = store.getState().mines;
-//   const mineDistance = minesArray.map(mine => {
-//     const mineX = mine.oldPosX 
-//     const mineY = mine.oldPosy;
-//     console.log(mineX,mineY )
-//     return Math.hypot(mineX - PlayerPosX, mineY - PlayerPosY);
-//   });
-//   mineDistance.splice(-1, 1).map(dis => {
-//     if (dis < 0) {
-//       console.log(dis)
-//       Explosion(PlayerPosX, PlayerPosY);
-//     }
-//   });
-// }
-
 export function distanceToBombChecker() {
   const PlayerPosX = store.getState().player.position[0];
   const PlayerPosY = store.getState().player.position[1];
@@ -118,27 +96,17 @@ export function distanceToBombChecker() {
 export function distanceToFlagChecker() {
   const PlayerPosX = store.getState().player.position[0];
   const PlayerPosY = store.getState().player.position[1];
-  const coinPosX = store.getState().flag.position[0]
-  const coinPosY = store.getState().flag.position[1]
-  
-  if(coinPosX === PlayerPosX && coinPosY === PlayerPosY ) {
-    socket.emit("new-flag-request")
-    // return alert("You win!!!");
+
+  if(store.getState().flag.position !== undefined) {
+    const coinPosX = store.getState().flag.position[0]
+    const coinPosY = store.getState().flag.position[1]
+    if(coinPosX === PlayerPosX && coinPosY === PlayerPosY ) {
+      ScoreCounter()
+      socket.emit("new-flag-request")
+    
+    }
   }
 }
-
-// export function catchCoin() {
-//   const PlayerPosX = store.getState().player.position[0] - 30;
-//   const PlayerPosY = store.getState().player.position[1] - 40;
-//   const coinPos = store.getState().flag;
-
-//   const coinX = coinPos[0] + 25;
-//   const coinY = coinPos[1] + 25;
-//   const coinPlayerDistance = Math.hypot(coinX - PlayerPosX, coinY - PlayerPosY);
-//   if (coinPlayerDistance <= 30) {
-//     return alert("player win!!!");
-//   } else return null
-// }
 
 function Explosion(PlayerPosX, PlayerPosY) {
   const explosionPosition = {
@@ -150,7 +118,6 @@ function Explosion(PlayerPosX, PlayerPosY) {
     payload: explosionPosition,
   });
   socket.emit("explosion", explosionPosition)
-  ScoreCounter()
 }
 
 function ScoreCounter() {
@@ -195,6 +162,7 @@ export function startGame() {
     type: "ADD_PLAYERID",
     payload: String(socket.id)
   });
+  
   dispatchPositionFlag()
 
 }

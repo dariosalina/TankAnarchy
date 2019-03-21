@@ -4,11 +4,6 @@ import {receivePlayerData} from '../actions/otherPlayerMovement'
 import BTank from './BTank.png'
 
 class OtherPlayer extends Component {
-  
-  componentDidMount() {
-    receivePlayerData()
-  }
-  
 
   render() {
     if (!this.props.position) return 'Waiting for the other player'

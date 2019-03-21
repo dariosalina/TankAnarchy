@@ -7,7 +7,7 @@ class Flag extends Component {
   render() {
     const flagPos = this.props.position;
 
-    if (this.props.position === undefined) return <div></div>;
+    if (this.props.position === undefined) return null
     return (
       <div
         style={{
