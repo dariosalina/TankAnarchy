@@ -20,7 +20,6 @@ useKoaServer(app, {
 let players = {}
 
 
-// Server is working, controller /test is working.
 io.on("connection", function(socket) {
 
   function sendFlag(){
@@ -63,6 +62,14 @@ io.on("connection", function(socket) {
     io.emit("mines-to-client", updatedMine )
   });
 
+  socket.on("update-score", receivedScore => {
+    const updatedScore = {
+      ID: socket.id,
+      payload: receivedScore
+    }
+    io.emit("score-to-client", updatedScore )
+  });
+
   socket.on("explosion", data => {
     const updateExplosion = {
       ID: socket.id,
@@ -76,6 +83,5 @@ io.on("connection", function(socket) {
     console.log(`User  just disconnected`);
   });
 })
-
 
 server.listen(port, () => console.log(`Listening on port ${port}`))
