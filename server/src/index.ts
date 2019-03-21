@@ -28,20 +28,22 @@ io.on("connection", function(socket) {
     io.emit('position-flag', setPosition)
   }
 
+  socket.on("new-flag-request", data => {
+    console.log(data)
+    sendFlag()
+  })
+
   socket.on('start-game', data => {
     console.log(`User with ID`,socket.id, `is connected`)
     console.log(Object.keys(players).length)
-    
+
     players[socket.id] = data.id
     const newData = {
       ID:  socket.id,
       payload: {position: [Math.floor(Math.random()*9)*40 + 40, Math.floor(Math.random()*9)*40 + 40]}
     }
-   
-    io.emit('player-added', newData, )
-
+    io.emit('player-added', newData)
     if (Object.keys(players).length === 2){
-
       sendFlag()
     }})
 
@@ -51,13 +53,8 @@ io.on("connection", function(socket) {
       payload: data.playerMovement
     }
     io.emit("move-completed", newData)
-
-  socket.on("new-flag-request", data => {
-    console.log(data)
-    sendFlag()
-  })
-
   });
+
   socket.on("drop-mine", data => {
     const updatedMine = {
       ID: socket.id,
@@ -78,9 +75,6 @@ io.on("connection", function(socket) {
     delete players[socket.id]
     console.log(`User  just disconnected`);
   });
-
-
-
 })
 
 
