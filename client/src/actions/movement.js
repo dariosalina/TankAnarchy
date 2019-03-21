@@ -54,10 +54,10 @@ export default function PlayerMovement(Player) {
       payload: playerMovement
     });
     socket.emit("movement", (socket.id, { playerMovement }));
-    store.dispatch({
-      type: "ADD_PLAYERID",
-      payload: String(socket.id)
-    });
+    // store.dispatch({
+    //   type: "ADD_PLAYERID",
+    //   payload: String(socket.id)
+    // });
   }
 
   function handleKeyDown(e) {
@@ -122,7 +122,8 @@ export function distanceToFlagChecker() {
   const coinPosY = store.getState().flag.position[1]
   
   if(coinPosX === PlayerPosX && coinPosY === PlayerPosY ) {
-    return alert("You win!!!");
+    socket.emit("new-flag-request")
+    // return alert("You win!!!");
   }
 }
 
@@ -185,12 +186,15 @@ function dispatchPositionFlag() {
 }
 
 export function startGame() {
-
   socket.emit('start-game', {
     id: socket.id,
     position: [0,0],
     
   })
+  store.dispatch({
+    type: "ADD_PLAYERID",
+    payload: String(socket.id)
+  });
   dispatchPositionFlag()
 
 }

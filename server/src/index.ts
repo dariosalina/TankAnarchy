@@ -1,3 +1,4 @@
+
 import "reflect-metadata";
 import { useKoaServer } from "routing-controllers";
 import Controller from "./controller";
@@ -29,15 +30,18 @@ io.on("connection", function(socket) {
 
   socket.on('start-game', data => {
     console.log(`User with ID`,socket.id, `is connected`)
+    console.log(Object.keys(players).length)
+    
     players[socket.id] = data.id
     const newData = {
       ID:  socket.id,
       payload: {position: [Math.floor(Math.random()*9)*40 + 40, Math.floor(Math.random()*9)*40 + 40]}
     }
-    console.log("new data", newData)
-    console.log(Object.keys(players).length)
+   
     io.emit('player-added', newData, )
+
     if (Object.keys(players).length === 2){
+
       sendFlag()
     }})
 

@@ -11,10 +11,11 @@ class OtherPlayer extends Component {
   
 
   render() {
+    if (!this.props.position) return 'Waiting for the other player'
 
     return (
        <div>
-             {!this.props && "loading..."}
+             {this.props === undefined  && "loading..."}
              
       <div
         style={{

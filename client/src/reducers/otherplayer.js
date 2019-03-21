@@ -1,10 +1,10 @@
-const inititalState = {
-    position: [200,200],
-    direction : ''
-}
+// const inititalState = {
+//     position: [],
+//     direction : ''
+// }
 
 
-const otherPlayerReducer = (state = inititalState, action) => {
+const otherPlayerReducer = (state = {}, action) => {
 
 
     switch(action.type) {

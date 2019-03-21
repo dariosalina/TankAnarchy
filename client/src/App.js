@@ -12,7 +12,6 @@ class App extends Component {
 
   startGame() {
     this.setState({display: true})
-    console.log(this.state.display)
     startGame()
   }
 

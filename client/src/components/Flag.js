@@ -13,8 +13,8 @@ class Flag extends Component {
         style={{
           position: "absolute",
           border: 'solid',
-          top: flagPos[0],
-          left: flagPos[1],
+          top: flagPos[1],
+          left: flagPos[0],
           backgroundImage: `url(${Coin})`,
           width: 40,
           height: 40,
