@@ -6,7 +6,7 @@ class Score extends Component {
     render() {
         return (
             <div>
-                <p>Your score is: {this.props.score}</p>
+                <p>Score: {this.props.score} vs {this.props.otherPlayerScore}</p>
             </div>
         );
       }

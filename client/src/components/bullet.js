@@ -18,11 +18,8 @@ class Bullet extends Component {
           <div
             style={{
               alignContent:'center',
-              // border: 2,
-              // padding: 25,
               borderStyle: 'solid',
               position: "absolute",
-              // display: 'inline-block',
               top: mine.oldPosy,
               left: mine.oldPosX,
               backgroundImage: `url(${Bomb})`,

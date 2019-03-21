@@ -17,10 +17,21 @@ export function receivePlayerData() {
     }
   })
 
+  socket.on("score-to-client", data => {
+    const playersID = store.getState().playersID
+    if (data.ID !== playersID) {
+      store.dispatch({
+        type: "UPDATE_SCORE_OTHERPLAYER",
+        payload: data.payload
+      });
+    }
+  })
+
   socket.on("move-completed", data => {
     const playersID = store.getState().playersID
-    if (data.ID !== playersID)
+    if (data.ID !== playersID) {
       dispatchOtherPlayerMove(data.payload)
+    }
   })
 }
 

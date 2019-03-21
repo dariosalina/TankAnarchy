@@ -121,9 +121,12 @@ function Explosion(PlayerPosX, PlayerPosY) {
 }
 
 function ScoreCounter() {
+
   store.dispatch({
     type: "UPDATESCORE",
   })
+  const score = store.getState().score
+  socket.emit("update-score", score)
  }
 
 export function dropBullet() {

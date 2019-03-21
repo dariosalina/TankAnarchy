@@ -20,12 +20,10 @@ class OtherPlayer extends Component {
           left: this.props.position[0],
           transform: `rotate(${this.props.direction}deg)`,
           backgroundImage: `url(${BTank})`,
-          // transform: `rotate(${this.props.direction}deg)`,
           width: 40,
           height: 40
         }}
       >
-        {/* Player2 */}
       </div>
       </div>    
     );
