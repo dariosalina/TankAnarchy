@@ -84,7 +84,6 @@ export default function PlayerMovement(Player) {
 export function distanceToBombChecker() {
   const PlayerPosX = store.getState().player.position[0];
   const PlayerPosY = store.getState().player.position[1];
-  
   store.getState().mines.map(mine => {
     if (mine.oldPosX === PlayerPosX && mine.oldPosy === PlayerPosY) {
       Explosion(PlayerPosX, PlayerPosY)
@@ -103,7 +102,6 @@ export function distanceToFlagChecker() {
     if(coinPosX === PlayerPosX && coinPosY === PlayerPosY ) {
       ScoreCounter()
       socket.emit("new-flag-request")
-    
     }
   }
 }
@@ -121,7 +119,6 @@ function Explosion(PlayerPosX, PlayerPosY) {
 }
 
 function ScoreCounter() {
-
   store.dispatch({
     type: "UPDATESCORE",
   })

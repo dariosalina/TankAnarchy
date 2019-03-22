@@ -29,10 +29,10 @@ class App extends Component {
 
   hideButton() {
     if(this.state.display === false) {
-      return <button onClick={()=> {this.startGame()}}>Start Game!!!</button>
-    }
+      return (<div><p>Catch as many coins possible. But watch out for the bombs! </p> 
+        <button onClick={()=> {this.startGame()}}>Join the game!</button></div>)
+    } 
   }
-
   render(){
   return (
       <div className="App"
@@ -44,18 +44,19 @@ class App extends Component {
       }}>
         <header
         style={{
-          fontSize:35,
           textAlign: 'center',
-          textDecorationStyle: 'bold',
           color: 'white',
           fontWeight: 'bold',
-        }}>TANK ANARCHY
-        <br />
+        }}><h1>TANK ANARCHY</h1>
+     
         </header>
+       
         <Score />
         {this.hideButton()}
         {this.displayMap()}
-      <footer>Made with love by Joey & Dario</footer>
+      <footer style={{
+        color: 'white'
+      }}>Made with love by Joey & Dario</footer>
       </div>
       
     );
