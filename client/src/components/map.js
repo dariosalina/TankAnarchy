@@ -10,6 +10,7 @@ function Map() {
   return (
     <div
       style={{
+        margin: '5px',
         display: 'inline-block',
         position: 'relative',
         height: "400px",

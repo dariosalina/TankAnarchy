@@ -27,24 +27,34 @@ class App extends Component {
     }
   }
 
+  hideButton() {
+    if(this.state.display === false) {
+      return <button onClick={()=> {this.startGame()}}>Start Game!!!</button>
+    }
+  }
+
   render(){
   return (
       <div className="App"
       style={
-        {backgroundColor :'#d1ffa3',
-        textAlign: 'center'
+        {backgroundColor :'#4b5320',
+        textAlign: 'center',
+        border: 'solid, 10px, white',
+        padding: '10px',
       }}>
         <header
         style={{
-          fontSize:30,
-          textAlign: 'center'
-        }}>TankAnarchy
+          fontSize:35,
+          textAlign: 'center',
+          textDecorationStyle: 'bold',
+          color: 'white',
+          fontWeight: 'bold',
+        }}>TANK ANARCHY
         <br />
-        <button onClick={()=> {this.startGame()}}>Start Game!!!</button>
         </header>
         <Score />
+        {this.hideButton()}
         {this.displayMap()}
-       {/* <Map /> */}
       <footer>Made with love by Joey & Dario</footer>
       </div>
       

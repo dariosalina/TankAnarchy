@@ -6,7 +6,19 @@ class Score extends Component {
     render() {
         return (
             <div>
-                <p>Score: {this.props.score} vs {this.props.otherPlayerScore}</p>
+              <p style={{
+                  display: 'inline-block',
+                  border: 'solid',
+                  color: 'white',
+                  width: '200px',
+
+                }}>Your score: {this.props.score}</p>
+                <p style={{
+                  display: 'inline-block',
+                  border: 'solid',
+                  color: 'white',
+                  width: '200px',
+                }}>Other score: {this.props.otherPlayerScore}</p>
             </div>
         );
       }
